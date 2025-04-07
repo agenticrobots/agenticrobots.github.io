@@ -1,14 +1,15 @@
-# Nerfies
+# GRAPPA
 
-This is the repository that contains source code for the [Nerfies website](https://nerfies.github.io).
+This is the repository that contains source code for: [https://agenticrobots.github.io](https://agenticrobots.github.io).
 
-If you find Nerfies useful for your work please cite:
+This website supplements the paper, [GRAPPA: Generalizing and Adapting Robot Policies via Online Agentic Guidance](https://agenticrobots.github.io/static/documents/grappa_2025.pdf)
+
+If you find GRAPPA useful for your work, please cite:
 ```
-@article{park2021nerfies
-  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
-  title     = {Nerfies: Deformable Neural Radiance Fields},
-  journal   = {ICCV},
-  year      = {2021},
+@article{bucker2025grappa
+  author    = {Bucker, Arthur and Ortega-Kral, Pablo and Francis, Jonathan and Oh, Jean},
+  title     = {GRAPPA: Generalizing and Adapting Robot Policies via Online Agentic Guidance},
+  year      = {2025},
 }
 ```
 
