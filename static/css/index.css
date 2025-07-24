@@ -2,7 +2,29 @@ body {
   font-family: 'Noto Sans', sans-serif;
 }
 
-
+p {
+  text-align: justify;
+}
+.video_check_overlay {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: transparent;
+  padding: 4px;
+  border-radius: 0px;
+  max-width: 10%;
+}
+.video_text_overlay {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 1rem;
+  pointer-events: none;
+}
 .footer .icon-link {
     font-size: 25px;
     color: #000;
@@ -13,7 +35,12 @@ body {
     margin-bottom: 5px;
 }
 
-.dnerf {
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+} 
+
+.grappa {
   font-variant: small-caps;
 }
 

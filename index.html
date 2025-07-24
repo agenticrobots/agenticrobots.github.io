@@ -1,2816 +1,802 @@
 <!DOCTYPE html>
-<html lang="en-GB" itemscope itemtype="http://schema.org/WebPage">
+<html>
 
 <head>
-  <meta http-equiv="refresh" content="0; url=https://sites.google.com/andrew.cmu.edu/grappa/home" />
-  <script type="text/javascript">
-      window.location.href = "https://sites.google.com/andrew.cmu.edu/grappa/home"
-  </script>
-      
   <meta charset="utf-8">
-  
+  <meta name="description" content="GRAPPA: Generalizing and Adapting Robot Policies via Online Agentic Guidance">
+  <meta name="keywords" content="GRAPPA, robotics, policy generalization, agentic guidance, robot learning">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="referrer" content="strict-origin-when-cross-origin">
-  <link rel="icon" href="https://ssl.gstatic.com/atari/images/public/favicon.ico">
-  <meta property="og:title" content="GRAPPA">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://sites.google.com/andrew.cmu.edu/grappa/home">
-  <meta property="og:description" content="Abstract">
-  <meta itemprop="name" content="GRAPPA">
-  <meta itemprop="description" content="Abstract">
-  <meta itemprop="url" content="https://sites.google.com/andrew.cmu.edu/grappa/home">
-  <meta itemprop="thumbnailUrl"
-    content="https://lh6.googleusercontent.com/5Ts76xqvZhdYoALbA6cyftwCxP-B5Tc3nhBde846VI75U-14UQvpkAKSlCFXAcn6URd4nWDwEwwWHBgHJk3R6Wghf--ZWnvvQyQWPAMIyp_t7IO6q3eh7U5JDJcuFV1L0afdDgdn13DSv4TkINsk0l6w0aNyA9qvDDjXXnfMbF4wP1-q3PdYyQ=w1280">
-  <meta itemprop="image"
-    content="https://lh6.googleusercontent.com/5Ts76xqvZhdYoALbA6cyftwCxP-B5Tc3nhBde846VI75U-14UQvpkAKSlCFXAcn6URd4nWDwEwwWHBgHJk3R6Wghf--ZWnvvQyQWPAMIyp_t7IO6q3eh7U5JDJcuFV1L0afdDgdn13DSv4TkINsk0l6w0aNyA9qvDDjXXnfMbF4wP1-q3PdYyQ=w1280">
-  <meta itemprop="imageUrl"
-    content="https://lh6.googleusercontent.com/5Ts76xqvZhdYoALbA6cyftwCxP-B5Tc3nhBde846VI75U-14UQvpkAKSlCFXAcn6URd4nWDwEwwWHBgHJk3R6Wghf--ZWnvvQyQWPAMIyp_t7IO6q3eh7U5JDJcuFV1L0afdDgdn13DSv4TkINsk0l6w0aNyA9qvDDjXXnfMbF4wP1-q3PdYyQ=w1280">
-  <meta property="og:image"
-    content="https://lh6.googleusercontent.com/5Ts76xqvZhdYoALbA6cyftwCxP-B5Tc3nhBde846VI75U-14UQvpkAKSlCFXAcn6URd4nWDwEwwWHBgHJk3R6Wghf--ZWnvvQyQWPAMIyp_t7IO6q3eh7U5JDJcuFV1L0afdDgdn13DSv4TkINsk0l6w0aNyA9qvDDjXXnfMbF4wP1-q3PdYyQ=w1280">
-  <link
-    href="https://fonts.googleapis.com/css?family=Lato%3A300%2C300italic%2C400%2C400italic%2C700%2C700italic&display=swap"
-    rel="stylesheet" nonce="OTl0v2-eJKyUL3Vby3fzWA">
-  <link
-    href="https://fonts.googleapis.com/css?family=Google+Sans:400,500|Roboto:300,400,500,700|Source+Code+Pro:400,700&display=swap"
-    rel="stylesheet" nonce="OTl0v2-eJKyUL3Vby3fzWA">
-  <link href="https://fonts.googleapis.com/css?family=Open%20Sans%3Ai%2Cbi%2C700%2C400&display=swap" rel="stylesheet"
-    nonce="OTl0v2-eJKyUL3Vby3fzWA">
-  <link href="https://fonts.googleapis.com/css?family=Source%20Code%20Pro%3Ai%2Cbi%2C700%2C400&display=swap"
-    rel="stylesheet" nonce="OTl0v2-eJKyUL3Vby3fzWA">
-  <style nonce="OTl0v2-eJKyUL3Vby3fzWA">
-    @media only screen and (max-width: 479px) {
-      .CGqCRe {
-        font-size: 27.0pt;
-      }
-    }
-
-    @media only screen and (min-width: 480px) and (max-width: 767px) {
-      .CGqCRe {
-        font-size: 32.0pt;
-      }
-    }
-
-    @media only screen and (min-width: 768px) and (max-width: 1279px) {
-      .CGqCRe {
-        font-size: 36.0pt;
-      }
-    }
-
-    @media only screen and (min-width: 1280px) {
-      .CGqCRe {
-        font-size: 36.0pt;
-      }
-    }
-
-    @media only screen and (max-width: 479px) {
-      .Rn3Z1b {
-        font-size: 23.0pt;
-      }
-    }
-
-    @media only screen and (min-width: 480px) and (max-width: 767px) {
-      .Rn3Z1b {
-        font-size: 27.0pt;
-      }
-    }
-
-    @media only screen and (min-width: 768px) and (max-width: 1279px) {
-      .Rn3Z1b {
-        font-size: 30.0pt;
-      }
-    }
-
-    @media only screen and (min-width: 1280px) {
-      .Rn3Z1b {
-        font-size: 30.0pt;
-      }
-    }
-  </style>
-  <link rel="stylesheet"
-    href="https://www.gstatic.com/_/atari/_/ss/k=atari.vw.XOSaKSGNSTc.L.W.O/am=AIABCA/d=1/rs=AGEqA5mPUrjsemn-xKCWqc6j8-E7NFwlNA"
-    data-id="_cl" nonce="OTl0v2-eJKyUL3Vby3fzWA">
-  <!-- <script nonce="jPWXTQK2h8iRJdNB6Aac3A"></script> -->
-  <title>Page Redirection - GRAPPA</title>
-  <style jsname="ptDGoc" nonce="OTl0v2-eJKyUL3Vby3fzWA">
-    .M63kCb {
-      background-color: rgba(255, 255, 255, 1);
-    }
-
-    .OUGEr {
-      color: rgba(33, 33, 33, 1);
-    }
-
-    .duRjpb .OUGEr {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .JYVBee .OUGEr {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .OmQG5e .OUGEr {
-      color: rgba(33, 33, 33, 1);
-    }
-
-    .iwQgFb {
-      background-color: rgba(211, 211, 211, 1);
-    }
-
-    .ySLm4c {
-      font-family: Lato, sans-serif;
-    }
-
-    .CbiMKe {
-      background-color: rgba(242, 242, 242, 1);
-    }
-
-    .qeLZfd .zfr3Q {
-      color: rgba(33, 33, 33, 1);
-    }
-
-    .qeLZfd .qnVSj {
-      color: rgba(33, 33, 33, 1);
-    }
-
-    .qeLZfd .Glwbz {
-      color: rgba(33, 33, 33, 1);
-    }
-
-    .qeLZfd .duRjpb {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .qeLZfd .qLrapd {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .qeLZfd .JYVBee {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .qeLZfd .aHM7ed {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .qeLZfd .OmQG5e {
-      color: rgba(33, 33, 33, 1);
-    }
-
-    .qeLZfd .NHD4Gf {
-      color: rgba(33, 33, 33, 1);
-    }
-
-    .qeLZfd .aw5Odc {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .qeLZfd .dhtgD:hover {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .qeLZfd .dhtgD:visited {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .qeLZfd .iwQgFb {
-      background-color: rgba(210, 210, 210, 1);
-    }
-
-    .qeLZfd .OUGEr {
-      color: rgba(33, 33, 33, 1);
-    }
-
-    .qeLZfd .duRjpb .OUGEr {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .qeLZfd .JYVBee .OUGEr {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .qeLZfd .OmQG5e .OUGEr {
-      color: rgba(33, 33, 33, 1);
-    }
-
-    .qeLZfd:before {
-      background-color: rgba(254, 254, 254, 1);
-      display: block;
-    }
-
-    .lQAHbd .zfr3Q {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .lQAHbd .qnVSj {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .lQAHbd .Glwbz {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .lQAHbd .duRjpb {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .lQAHbd .qLrapd {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .lQAHbd .JYVBee {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .lQAHbd .aHM7ed {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .lQAHbd .OmQG5e {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .lQAHbd .NHD4Gf {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .lQAHbd .aw5Odc {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .lQAHbd .dhtgD:hover {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .lQAHbd .dhtgD:visited {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .lQAHbd .iwQgFb {
-      background-color: rgba(200, 200, 200, 1);
-    }
-
-    .lQAHbd .OUGEr {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .lQAHbd .duRjpb .OUGEr {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .lQAHbd .JYVBee .OUGEr {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .lQAHbd .OmQG5e .OUGEr {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .lQAHbd .CbiMKe {
-      background-color: rgba(255, 255, 255, 1);
-    }
-
-    .lQAHbd:before {
-      background-color: rgba(242, 242, 242, 1);
-      display: block;
-    }
-
-    .cJgDec .zfr3Q {
-      color: rgba(255, 255, 255, 1);
-    }
-
-    .cJgDec .zfr3Q .OUGEr {
-      color: rgba(255, 255, 255, 1);
-    }
-
-    .cJgDec .qnVSj {
-      color: rgba(255, 255, 255, 1);
-    }
-
-    .cJgDec .Glwbz {
-      color: rgba(255, 255, 255, 1);
-    }
-
-    .cJgDec .qLrapd {
-      color: rgba(255, 255, 255, 1);
-    }
-
-    .cJgDec .aHM7ed {
-      color: rgba(255, 255, 255, 1);
-    }
-
-    .cJgDec .NHD4Gf {
-      color: rgba(255, 255, 255, 1);
-    }
-
-    .cJgDec .IFuOkc:before {
-      background-color: rgba(33, 33, 33, 1);
-      opacity: 0;
-      display: block;
-    }
-
-    .O13XJf {
-      height: 340px;
-      padding-bottom: 60px;
-      padding-top: 60px;
-    }
-
-    .O13XJf .IFuOkc {
-      background-color: rgba(242, 242, 242, 1);
-      background-image: url(https://ssl.gstatic.com/atari/images/simple-header-blended-small.png);
-    }
-
-    .O13XJf .IFuOkc:before {
-      background-color: rgba(33, 33, 33, 1);
-      opacity: 0.4;
-      display: block;
-    }
-
-    .O13XJf .zfr3Q {
-      color: rgba(255, 255, 255, 1);
-    }
-
-    .O13XJf .qnVSj {
-      color: rgba(255, 255, 255, 1);
-    }
-
-    .O13XJf .Glwbz {
-      color: rgba(255, 255, 255, 1);
-    }
-
-    .O13XJf .duRjpb {
-      color: rgba(255, 255, 255, 1);
-    }
-
-    .O13XJf .qLrapd {
-      color: rgba(255, 255, 255, 1);
-    }
-
-    .O13XJf .JYVBee {
-      color: rgba(255, 255, 255, 1);
-    }
-
-    .O13XJf .aHM7ed {
-      color: rgba(255, 255, 255, 1);
-    }
-
-    .O13XJf .OmQG5e {
-      color: rgba(255, 255, 255, 1);
-    }
-
-    .O13XJf .NHD4Gf {
-      color: rgba(255, 255, 255, 1);
-    }
-
-    .tpmmCb .zfr3Q {
-      color: rgba(33, 33, 33, 1);
-    }
-
-    .tpmmCb .zfr3Q .OUGEr {
-      color: rgba(33, 33, 33, 1);
-    }
-
-    .tpmmCb .qnVSj {
-      color: rgba(33, 33, 33, 1);
-    }
-
-    .tpmmCb .Glwbz {
-      color: rgba(33, 33, 33, 1);
-    }
-
-    .tpmmCb .qLrapd {
-      color: rgba(33, 33, 33, 1);
-    }
-
-    .tpmmCb .aHM7ed {
-      color: rgba(33, 33, 33, 1);
-    }
-
-    .tpmmCb .NHD4Gf {
-      color: rgba(33, 33, 33, 1);
-    }
-
-    .tpmmCb .IFuOkc:before {
-      background-color: rgba(255, 255, 255, 1);
-      display: block;
-    }
-
-    .tpmmCb .Wew9ke {
-      fill: rgba(33, 33, 33, 1);
-    }
-
-    .aw5Odc {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .dhtgD:hover {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .dhtgD:active {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .dhtgD:visited {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .Zjiec {
-      color: rgba(255, 255, 255, 1);
-      font-family: Lato, sans-serif;
-      font-size: 19pt;
-      font-weight: 300;
-      letter-spacing: 1px;
-      line-height: 1.3;
-      padding-bottom: 62.5px;
-      padding-left: 48px;
-      padding-right: 36px;
-      padding-top: 11.5px;
-    }
-
-    .XMyrgf {
-      margin-top: 0px;
-      margin-left: 48px;
-      margin-bottom: 24px;
-      margin-right: 24px;
-    }
-
-    .TlfmSc {
-      color: rgba(255, 255, 255, 1);
-      font-family: Lato, sans-serif;
-      font-size: 15pt;
-      font-weight: 300;
-      line-height: 1.333;
-    }
-
-    .Mz8gvb {
-      color: rgba(255, 255, 255, 1);
-    }
-
-    .zDUgLc {
-      background-color: rgba(33, 33, 33, 1);
-    }
-
-    .QTKDff.chg4Jd:focus {
-      background-color: rgba(255, 255, 255, 0.1199999973);
-    }
-
-    .YTv4We {
-      color: rgba(178, 178, 178, 1);
-    }
-
-    .YTv4We:hover:before {
-      background-color: rgba(255, 255, 255, 0.1199999973);
-      display: block;
-    }
-
-    .YTv4We.chg4Jd:focus:before {
-      border-color: rgba(255, 255, 255, 0.3600000143);
-      display: block;
-    }
-
-    .eWDljc {
-      background-color: rgba(33, 33, 33, 1);
-    }
-
-    .eWDljc .hDrhEe {
-      padding-left: 8px;
-    }
-
-    .ZXW7w {
-      color: rgba(255, 255, 255, 1);
-      opacity: 0.26;
-    }
-
-    .PsKE7e {
-      color: rgba(255, 255, 255, 1);
-      font-family: Lato, sans-serif;
-      font-size: 12pt;
-      font-weight: 300;
-    }
-
-    .lhZOrc {
-      color: rgba(245, 245, 245, 1);
-    }
-
-    .hDrhEe:hover {
-      color: rgba(245, 245, 245, 1);
-    }
-
-    .M9vuGd {
-      color: rgba(245, 245, 245, 1);
-      font-weight: 400;
-    }
-
-    .jgXgSe:hover {
-      color: rgba(245, 245, 245, 1);
-    }
-
-    .j10yRb:hover {
-      color: rgba(245, 245, 245, 1);
-    }
-
-    .j10yRb.chg4Jd:focus:before {
-      border-color: rgba(255, 255, 255, 0.3600000143);
-      display: block;
-    }
-
-    .tCHXDc {
-      color: rgba(255, 255, 255, 1);
-    }
-
-    .iWs3gf.chg4Jd:focus {
-      background-color: rgba(255, 255, 255, 0.1199999973);
-    }
-
-    .wgxiMe {
-      background-color: rgba(33, 33, 33, 1);
-    }
-
-    .fOU46b .TlfmSc {
-      color: rgba(255, 255, 255, 1);
-    }
-
-    .fOU46b .KJll8d {
-      background-color: rgba(255, 255, 255, 1);
-    }
-
-    .fOU46b .Mz8gvb {
-      color: rgba(255, 255, 255, 1);
-    }
-
-    .fOU46b .Mz8gvb.chg4Jd:focus:before {
-      border-color: rgba(255, 255, 255, 1);
-      display: block;
-    }
-
-    .fOU46b .qV4dIc {
-      color: rgba(255, 255, 255, 0.8700000048);
-    }
-
-    .fOU46b .jgXgSe:hover {
-      color: rgba(255, 255, 255, 1);
-    }
-
-    .fOU46b .M9vuGd {
-      color: rgba(255, 255, 255, 1);
-    }
-
-    .fOU46b .tCHXDc {
-      color: rgba(255, 255, 255, 0.8700000048);
-    }
-
-    .fOU46b .iWs3gf.chg4Jd:focus {
-      background-color: rgba(255, 255, 255, 0.1199999973);
-    }
-
-    .fOU46b .G8QRnc .Mz8gvb {
-      color: rgba(0, 0, 0, 0.8000000119);
-    }
-
-    .fOU46b .G8QRnc .Mz8gvb.chg4Jd:focus:before {
-      border-color: rgba(0, 0, 0, 0.8000000119);
-      display: block;
-    }
-
-    .fOU46b .G8QRnc .ZXW7w {
-      color: rgba(0, 0, 0, 0.8000000119);
-    }
-
-    .fOU46b .G8QRnc .TlfmSc {
-      color: rgba(0, 0, 0, 0.8000000119);
-    }
-
-    .fOU46b .G8QRnc .KJll8d {
-      background-color: rgba(0, 0, 0, 0.8000000119);
-    }
-
-    .fOU46b .G8QRnc .qV4dIc {
-      color: rgba(0, 0, 0, 0.6399999857);
-    }
-
-    .fOU46b .G8QRnc .jgXgSe:hover {
-      color: rgba(0, 0, 0, 0.8199999928);
-    }
-
-    .fOU46b .G8QRnc .M9vuGd {
-      color: rgba(0, 0, 0, 0.8199999928);
-    }
-
-    .fOU46b .G8QRnc .tCHXDc {
-      color: rgba(0, 0, 0, 0.6399999857);
-    }
-
-    .fOU46b .G8QRnc .iWs3gf.chg4Jd:focus {
-      background-color: rgba(0, 0, 0, 0.1199999973);
-    }
-
-    .fOU46b .usN8rf .Mz8gvb {
-      color: rgba(0, 0, 0, 0.8000000119);
-    }
-
-    .fOU46b .usN8rf .Mz8gvb.chg4Jd:focus:before {
-      border-color: rgba(0, 0, 0, 0.8000000119);
-      display: block;
-    }
-
-    .fOU46b .usN8rf .ZXW7w {
-      color: rgba(0, 0, 0, 0.8000000119);
-    }
-
-    .fOU46b .usN8rf .TlfmSc {
-      color: rgba(0, 0, 0, 0.8000000119);
-    }
-
-    .fOU46b .usN8rf .KJll8d {
-      background-color: rgba(0, 0, 0, 0.8000000119);
-    }
-
-    .fOU46b .usN8rf .qV4dIc {
-      color: rgba(0, 0, 0, 0.6399999857);
-    }
-
-    .fOU46b .usN8rf .jgXgSe:hover {
-      color: rgba(0, 0, 0, 0.8199999928);
-    }
-
-    .fOU46b .usN8rf .M9vuGd {
-      color: rgba(0, 0, 0, 0.8199999928);
-    }
-
-    .fOU46b .usN8rf .tCHXDc {
-      color: rgba(0, 0, 0, 0.6399999857);
-    }
-
-    .fOU46b .usN8rf .iWs3gf.chg4Jd:focus {
-      background-color: rgba(0, 0, 0, 0.1199999973);
-    }
-
-    .fOU46b .aCIEDd .qV4dIc {
-      color: rgba(33, 33, 33, 1);
-    }
-
-    .fOU46b .aCIEDd .TlfmSc {
-      color: rgba(33, 33, 33, 1);
-    }
-
-    .fOU46b .aCIEDd .KJll8d {
-      background-color: rgba(33, 33, 33, 1);
-    }
-
-    .fOU46b .aCIEDd .ZXW7w {
-      color: rgba(33, 33, 33, 1);
-    }
-
-    .fOU46b .aCIEDd .jgXgSe:hover {
-      color: rgba(33, 33, 33, 1);
-      opacity: 0.82;
-    }
-
-    .fOU46b .aCIEDd .Mz8gvb {
-      color: rgba(33, 33, 33, 1);
-    }
-
-    .fOU46b .aCIEDd .tCHXDc {
-      color: rgba(33, 33, 33, 1);
-    }
-
-    .fOU46b .aCIEDd .iWs3gf.chg4Jd:focus {
-      background-color: rgba(33, 33, 33, 0.1199999973);
-    }
-
-    .fOU46b .a3ETed .qV4dIc {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .fOU46b .a3ETed .TlfmSc {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .fOU46b .a3ETed .KJll8d {
-      background-color: rgba(0, 0, 0, 1);
-    }
-
-    .fOU46b .a3ETed .ZXW7w {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .fOU46b .a3ETed .jgXgSe:hover {
-      color: rgba(0, 0, 0, 1);
-      opacity: 0.82;
-    }
-
-    .fOU46b .a3ETed .Mz8gvb {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .fOU46b .a3ETed .tCHXDc {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .fOU46b .a3ETed .iWs3gf.chg4Jd:focus {
-      background-color: rgba(0, 0, 0, 0.1199999973);
-    }
-
-    @media only screen and (min-width: 1280px) {
-      .XeSM4.b2Iqye.fOU46b .LBrwzc .tCHXDc {
-        color: rgba(255, 255, 255, 0.8700000048);
-      }
-    }
-
-    .XeSM4.b2Iqye.fOU46b .LBrwzc .iWs3gf.chg4Jd:focus {
-      background-color: rgba(255, 255, 255, 0.1199999973);
-    }
-
-    @media only screen and (min-width: 1280px) {
-      .KuNac.b2Iqye.fOU46b .tCHXDc {
-        color: rgba(0, 0, 0, 0.6399999857);
-      }
-    }
-
-    .KuNac.b2Iqye.fOU46b .iWs3gf.chg4Jd:focus {
-      background-color: rgba(0, 0, 0, 0.1199999973);
-    }
-
-    .fOU46b .zDUgLc {
-      opacity: 0;
-    }
-
-    .LBrwzc .ZXW7w {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .LBrwzc .KJll8d {
-      background-color: rgba(0, 0, 0, 1);
-    }
-
-    .GBy4H .ZXW7w {
-      color: rgba(255, 255, 255, 1);
-    }
-
-    .GBy4H .KJll8d {
-      background-color: rgba(255, 255, 255, 1);
-    }
-
-    .eBSUbc {
-      background-color: rgba(33, 33, 33, 1);
-      color: rgba(0, 188, 212, 0.6999999881);
-    }
-
-    .BFDQOb:hover {
-      color: rgba(245, 245, 245, 1);
-    }
-
-    .ImnMyf {
-      background-color: rgba(255, 255, 255, 1);
-      color: rgba(33, 33, 33, 1);
-    }
-
-    .Vs12Bd {
-      background-color: rgba(254, 254, 254, 1);
-      color: rgba(33, 33, 33, 1);
-    }
-
-    .S5d9Rd {
-      background-color: rgba(242, 242, 242, 1);
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .zfr3Q {
-      color: rgba(33, 33, 33, 1);
-      font-family: Lato, sans-serif;
-      font-size: 11pt;
-      font-weight: 400;
-      line-height: 1.6667;
-      margin-top: 12px;
-    }
-
-    .qnVSj {
-      color: rgba(33, 33, 33, 1);
-    }
-
-    .Glwbz {
-      color: rgba(33, 33, 33, 1);
-    }
-
-    .duRjpb {
-      color: rgba(0, 0, 0, 1);
-      font-family: Lato, sans-serif;
-      font-size: 34pt;
-      font-weight: 300;
-      letter-spacing: 0.5px;
-      line-height: 1.2;
-      margin-top: 30px;
-    }
-
-    .Ap4VC {
-      margin-bottom: -30px;
-    }
-
-    .qLrapd {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .JYVBee {
-      color: rgba(0, 0, 0, 1);
-      font-family: Lato, sans-serif;
-      font-size: 19pt;
-      font-weight: 400;
-      line-height: 1.4;
-      margin-top: 20px;
-    }
-
-    .CobnVe {
-      margin-bottom: -20px;
-    }
-
-    .aHM7ed {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .OmQG5e {
-      color: rgba(33, 33, 33, 1);
-      font-family: Lato, sans-serif;
-      font-size: 15pt;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 1.25;
-      margin-top: 16px;
-    }
-
-    .GV3q8e {
-      margin-bottom: -16px;
-    }
-
-    .NHD4Gf {
-      color: rgba(33, 33, 33, 1);
-    }
-
-    .LB7kq .duRjpb {
-      font-size: 64pt;
-      letter-spacing: 2px;
-      line-height: 1;
-      margin-top: 40px;
-    }
-
-    .LB7kq .JYVBee {
-      font-size: 25pt;
-      font-weight: 300;
-      line-height: 1.1;
-      margin-top: 25px;
-    }
-
-    @media only screen and (max-width: 479px) {
-      .LB7kq .duRjpb {
-        font-size: 40pt;
-      }
-    }
-
-    @media only screen and (min-width: 480px) and (max-width: 767px) {
-      .LB7kq .duRjpb {
-        font-size: 53pt;
-      }
-    }
-
-    @media only screen and (max-width: 479px) {
-      .LB7kq .JYVBee {
-        font-size: 19pt;
-      }
-    }
-
-    @media only screen and (min-width: 480px) and (max-width: 767px) {
-      .LB7kq .JYVBee {
-        font-size: 22pt;
-      }
-    }
-
-    .O13XJf {
-      height: 340px;
-      padding-bottom: 60px;
-      padding-top: 60px;
-    }
-
-    @media only screen and (min-width: 480px) and (max-width: 767px) {
-      .O13XJf {
-        height: 280px;
-        padding-bottom: 40px;
-        padding-top: 40px;
-      }
-    }
-
-    @media only screen and (max-width: 479px) {
-      .O13XJf {
-        height: 250px;
-        padding-bottom: 30px;
-        padding-top: 30px;
-      }
-    }
-
-    .SBrW1 {
-      height: 520px;
-    }
-
-    @media only screen and (min-width: 480px) and (max-width: 767px) {
-      .SBrW1 {
-        height: 520px;
-      }
-    }
-
-    @media only screen and (max-width: 479px) {
-      .SBrW1 {
-        height: 400px;
-      }
-    }
-
-    .Wew9ke {
-      fill: rgba(255, 255, 255, 1);
-    }
-
-    .gk8rDe {
-      height: 180px;
-      padding-bottom: 32px;
-      padding-top: 60px;
-    }
-
-    .gk8rDe .zfr3Q {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .gk8rDe .duRjpb {
-      color: rgba(0, 0, 0, 1);
-      font-size: 45pt;
-      line-height: 1.1;
-    }
-
-    .gk8rDe .qLrapd {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .gk8rDe .JYVBee {
-      color: rgba(0, 0, 0, 1);
-      font-size: 27pt;
-      line-height: 1.35;
-      margin-top: 15px;
-    }
-
-    .gk8rDe .aHM7ed {
-      color: rgba(0, 0, 0, 1);
-    }
-
-    .gk8rDe .OmQG5e {
-      color: rgba(33, 33, 33, 1);
-    }
-
-    .gk8rDe .NHD4Gf {
-      color: rgba(33, 33, 33, 1);
-    }
-
-    @media only screen and (max-width: 479px) {
-      .gk8rDe .duRjpb {
-        font-size: 30pt;
-      }
-    }
-
-    @media only screen and (min-width: 480px) and (max-width: 767px) {
-      .gk8rDe .duRjpb {
-        font-size: 38pt;
-      }
-    }
-
-    @media only screen and (max-width: 479px) {
-      .gk8rDe .JYVBee {
-        font-size: 20pt;
-      }
-    }
-
-    @media only screen and (min-width: 480px) and (max-width: 767px) {
-      .gk8rDe .JYVBee {
-        font-size: 24pt;
-      }
-    }
-
-    @media only screen and (min-width: 480px) and (max-width: 767px) {
-      .gk8rDe {
-        padding-top: 45px;
-      }
-    }
-
-    @media only screen and (max-width: 479px) {
-      .gk8rDe {
-        padding-bottom: 0px;
-        padding-top: 30px;
-      }
-    }
-
-    .dhtgD {
-      text-decoration: underline;
-    }
-
-    .JzO0Vc {
-      background-color: rgba(33, 33, 33, 1);
-      font-family: Lato, sans-serif;
-      width: 250px;
-    }
-
-    @media only screen and (min-width: 1280px) {
-      .JzO0Vc {
-        padding-top: 48.5px;
-      }
-    }
-
-    .TlfmSc {
-      font-family: Lato, sans-serif;
-      font-size: 15pt;
-      font-weight: 300;
-      line-height: 1.333;
-    }
-
-    .PsKE7e {
-      font-family: Lato, sans-serif;
-      font-size: 12pt;
-    }
-
-    .IKA38e {
-      line-height: 1.21;
-    }
-
-    .hDrhEe {
-      padding-bottom: 11.5px;
-      padding-top: 11.5px;
-    }
-
-    .zDUgLc {
-      opacity: 1;
-    }
-
-    .QmpIrf {
-      background-color: rgba(242, 242, 242, 1);
-      border-color: rgba(0, 0, 0, 1);
-      color: rgba(0, 0, 0, 1);
-      font-family: Lato, sans-serif;
-      font-size: 11pt;
-      line-height: normal;
-    }
-
-    .xkUom {
-      border-color: rgba(242, 242, 242, 1);
-      color: rgba(242, 242, 242, 1);
-      font-family: Lato, sans-serif;
-      font-size: 11pt;
-      line-height: normal;
-    }
-
-    .xkUom:hover {
-      background-color: rgba(242, 242, 242, 0.1000000015);
-    }
-
-    .KjwKmc {
-      color: rgba(242, 242, 242, 1);
-      font-family: Lato, sans-serif;
-      font-size: 11pt;
-      line-height: normal;
-      line-height: normal;
-    }
-
-    .KjwKmc:hover {
-      background-color: rgba(242, 242, 242, 0.1000000015);
-    }
-
-    .lQAHbd .QmpIrf {
-      background-color: rgba(255, 255, 255, 1);
-      border-color: rgba(0, 0, 0, 1);
-      color: rgba(0, 0, 0, 1);
-      font-family: Lato, sans-serif;
-      font-size: 11pt;
-      line-height: normal;
-    }
-
-    .lQAHbd .xkUom {
-      border-color: rgba(254, 254, 254, 1);
-      color: rgba(254, 254, 254, 1);
-      font-family: Lato, sans-serif;
-      font-size: 11pt;
-      line-height: normal;
-    }
-
-    .lQAHbd .xkUom:hover {
-      background-color: rgba(255, 255, 255, 0.1000000015);
-    }
-
-    .lQAHbd .KjwKmc {
-      color: rgba(254, 254, 254, 1);
-      font-family: Lato, sans-serif;
-      font-size: 11pt;
-      line-height: normal;
-    }
-
-    .lQAHbd .KjwKmc:hover {
-      background-color: rgba(255, 255, 255, 0.1000000015);
-    }
-
-    .lQAHbd .Mt0nFe {
-      border-color: rgba(0, 0, 0, 0.200000003);
-    }
-
-    .cJgDec .QmpIrf {
-      background-color: rgba(255, 255, 255, 1);
-      border-color: rgba(0, 0, 0, 1);
-      color: rgba(0, 0, 0, 1);
-      font-family: Lato, sans-serif;
-      font-size: 11pt;
-      line-height: normal;
-    }
-
-    .cJgDec .xkUom {
-      border-color: rgba(254, 254, 254, 1);
-      color: rgba(254, 254, 254, 1);
-      font-family: Lato, sans-serif;
-      font-size: 11pt;
-      line-height: normal;
-    }
-
-    .cJgDec .xkUom:hover {
-      background-color: rgba(255, 255, 255, 0.1000000015);
-    }
-
-    .cJgDec .KjwKmc {
-      color: rgba(254, 254, 254, 1);
-      font-family: Lato, sans-serif;
-      font-size: 11pt;
-      line-height: normal;
-    }
-
-    .cJgDec .KjwKmc:hover {
-      background-color: rgba(255, 255, 255, 0.1000000015);
-    }
-
-    .tpmmCb .QmpIrf {
-      background-color: rgba(255, 255, 255, 1);
-      border-color: rgba(0, 0, 0, 1);
-      color: rgba(0, 0, 0, 1);
-      font-family: Lato, sans-serif;
-      font-size: 11pt;
-      line-height: normal;
-    }
-
-    .tpmmCb .xkUom {
-      border-color: rgba(242, 242, 242, 1);
-      color: rgba(242, 242, 242, 1);
-      font-family: Lato, sans-serif;
-      font-size: 11pt;
-      line-height: normal;
-    }
-
-    .tpmmCb .xkUom:hover {
-      background-color: rgba(242, 242, 242, 0.1000000015);
-    }
-
-    .tpmmCb .KjwKmc {
-      color: rgba(242, 242, 242, 1);
-      font-family: Lato, sans-serif;
-      font-size: 11pt;
-      line-height: normal;
-    }
-
-    .tpmmCb .KjwKmc:hover {
-      background-color: rgba(242, 242, 242, 0.1000000015);
-    }
-
-    .gk8rDe .QmpIrf {
-      background-color: rgba(242, 242, 242, 1);
-      border-color: rgba(0, 0, 0, 1);
-      color: rgba(0, 0, 0, 1);
-      font-family: Lato, sans-serif;
-      font-size: 11pt;
-      line-height: normal;
-    }
-
-    .gk8rDe .xkUom {
-      border-color: rgba(242, 242, 242, 1);
-      color: rgba(242, 242, 242, 1);
-      font-family: Lato, sans-serif;
-      font-size: 11pt;
-      line-height: normal;
-    }
-
-    .gk8rDe .xkUom:hover {
-      background-color: rgba(242, 242, 242, 0.1000000015);
-    }
-
-    .gk8rDe .KjwKmc {
-      color: rgba(242, 242, 242, 1);
-      font-family: Lato, sans-serif;
-      font-size: 11pt;
-      line-height: normal;
-    }
-
-    .gk8rDe .KjwKmc:hover {
-      background-color: rgba(242, 242, 242, 0.1000000015);
-    }
-
-    .O13XJf .QmpIrf {
-      background-color: rgba(255, 255, 255, 1);
-      border-color: rgba(0, 0, 0, 1);
-      color: rgba(0, 0, 0, 1);
-      font-family: Lato, sans-serif;
-      font-size: 11pt;
-      line-height: normal;
-    }
-
-    .O13XJf .xkUom {
-      border-color: rgba(254, 254, 254, 1);
-      color: rgba(254, 254, 254, 1);
-      font-family: Lato, sans-serif;
-      font-size: 11pt;
-      line-height: normal;
-    }
-
-    .O13XJf .xkUom:hover {
-      background-color: rgba(255, 255, 255, 0.1000000015);
-    }
-
-    .O13XJf .KjwKmc {
-      color: rgba(254, 254, 254, 1);
-      font-family: Lato, sans-serif;
-      font-size: 11pt;
-      line-height: normal;
-    }
-
-    .O13XJf .KjwKmc:hover {
-      background-color: rgba(255, 255, 255, 0.1000000015);
-    }
-
-    .Y4CpGd {
-      font-family: Lato, sans-serif;
-      font-size: 11pt;
-    }
-
-    .CMArNe {
-      background-color: rgba(254, 254, 254, 1);
-    }
-
-    .LBrwzc .TlfmSc {
-      color: rgba(0, 0, 0, 0.8000000119);
-    }
-
-    .LBrwzc .YTv4We {
-      color: rgba(0, 0, 0, 0.6399999857);
-    }
-
-    .LBrwzc .YTv4We.chg4Jd:focus:before {
-      border-color: rgba(0, 0, 0, 0.6399999857);
-      display: block;
-    }
-
-    .LBrwzc .Mz8gvb {
-      color: rgba(0, 0, 0, 0.6399999857);
-    }
-
-    .LBrwzc .tCHXDc {
-      color: rgba(0, 0, 0, 0.6399999857);
-    }
-
-    .LBrwzc .iWs3gf.chg4Jd:focus {
-      background-color: rgba(0, 0, 0, 0.1199999973);
-    }
-
-    .LBrwzc .wgxiMe {
-      background-color: rgba(255, 255, 255, 1);
-    }
-
-    .LBrwzc .qV4dIc {
-      color: rgba(0, 0, 0, 0.6399999857);
-    }
-
-    .LBrwzc .M9vuGd {
-      color: rgba(0, 0, 0, 0.8000000119);
-      font-weight: bold;
-    }
-
-    .LBrwzc .Zjiec {
-      color: rgba(0, 0, 0, 0.8000000119);
-    }
-
-    .LBrwzc .IKA38e {
-      color: rgba(0, 0, 0, 0.6399999857);
-    }
-
-    .LBrwzc .lhZOrc.IKA38e {
-      color: rgba(0, 0, 0, 0.8000000119);
-      font-weight: bold;
-    }
-
-    .LBrwzc .j10yRb:hover {
-      color: rgba(0, 0, 0, 0.8000000119);
-    }
-
-    .LBrwzc .eBSUbc {
-      color: rgba(0, 0, 0, 0.8000000119);
-    }
-
-    .LBrwzc .hDrhEe:hover {
-      color: rgba(0, 0, 0, 0.8000000119);
-    }
-
-    .LBrwzc .jgXgSe:hover {
-      color: rgba(0, 0, 0, 0.8000000119);
-    }
-
-    .LBrwzc .M9vuGd:hover {
-      color: rgba(0, 0, 0, 0.8000000119);
-    }
-
-    .LBrwzc .zDUgLc {
-      border-bottom-color: rgba(204, 204, 204, 1);
-      border-bottom-width: 1px;
-      border-bottom-style: solid;
-    }
-
-    .fOU46b .LBrwzc .M9vuGd {
-      color: rgba(0, 0, 0, 0.8000000119);
-    }
-
-    .fOU46b .LBrwzc .jgXgSe:hover {
-      color: rgba(0, 0, 0, 0.8000000119);
-    }
-
-    .fOU46b .LBrwzc .zDUgLc {
-      opacity: 1;
-      border-bottom-style: none;
-    }
-
-    .fOU46b .LBrwzc .tCHXDc {
-      color: rgba(0, 0, 0, 0.6399999857);
-    }
-
-    .fOU46b .LBrwzc .iWs3gf.chg4Jd:focus {
-      background-color: rgba(0, 0, 0, 0.1199999973);
-    }
-
-    .fOU46b .GBy4H .M9vuGd {
-      color: rgba(255, 255, 255, 1);
-    }
-
-    .fOU46b .GBy4H .jgXgSe:hover {
-      color: rgba(255, 255, 255, 1);
-    }
-
-    .fOU46b .GBy4H .zDUgLc {
-      opacity: 1;
-    }
-
-    .fOU46b .GBy4H .tCHXDc {
-      color: rgba(255, 255, 255, 0.8700000048);
-    }
-
-    .fOU46b .GBy4H .iWs3gf.chg4Jd:focus {
-      background-color: rgba(255, 255, 255, 0.1199999973);
-    }
-
-    .XeSM4.G9Qloe.fOU46b .LBrwzc .tCHXDc {
-      color: rgba(0, 0, 0, 0.6399999857);
-    }
-
-    .XeSM4.G9Qloe.fOU46b .LBrwzc .iWs3gf.chg4Jd:focus {
-      background-color: rgba(0, 0, 0, 0.1199999973);
-    }
-
-    .GBy4H .lhZOrc.IKA38e {
-      color: rgba(255, 255, 255, 1);
-    }
-
-    .GBy4H .eBSUbc {
-      color: rgba(255, 255, 255, 0.8700000048);
-    }
-
-    .GBy4H .hDrhEe:hover {
-      color: rgba(255, 255, 255, 1);
-    }
-
-    .GBy4H .j10yRb:hover {
-      color: rgba(255, 255, 255, 1);
-    }
-
-    .GBy4H .YTv4We {
-      color: rgba(255, 255, 255, 1);
-    }
-
-    .GBy4H .YTv4We.chg4Jd:focus:before {
-      border-color: rgba(255, 255, 255, 1);
-      display: block;
-    }
-
-    .GBy4H .tCHXDc {
-      color: rgba(255, 255, 255, 0.8700000048);
-    }
-
-    .GBy4H .iWs3gf.chg4Jd:focus {
-      background-color: rgba(255, 255, 255, 0.1199999973);
-    }
-
-    .GBy4H .jgXgSe:hover {
-      color: rgba(255, 255, 255, 1);
-    }
-
-    .GBy4H .jgXgSe:hover {
-      color: rgba(255, 255, 255, 1);
-    }
-
-    .GBy4H .M9vuGd {
-      color: rgba(255, 255, 255, 1);
-    }
-
-    .GBy4H .M9vuGd:hover {
-      color: rgba(255, 255, 255, 1);
-    }
-
-    .QcmuFb {
-      padding-left: 20px;
-    }
-
-    .vDPrib {
-      padding-left: 40px;
-    }
-
-    .TBDXjd {
-      padding-left: 60px;
-    }
-
-    .bYeK8e {
-      padding-left: 80px;
-    }
-
-    .CuqSDe {
-      padding-left: 100px;
-    }
-
-    .Havqpe {
-      padding-left: 120px;
-    }
-
-    .JvDrRe {
-      padding-left: 140px;
-    }
-
-    .o5lrIf {
-      padding-left: 160px;
-    }
-
-    .yOJW7c {
-      padding-left: 180px;
-    }
-
-    .rB8cye {
-      padding-left: 200px;
-    }
-
-    .RuayVd {
-      padding-right: 20px;
-    }
-
-    .YzcKX {
-      padding-right: 40px;
-    }
-
-    .reTV0b {
-      padding-right: 60px;
-    }
-
-    .vSYeUc {
-      padding-right: 80px;
-    }
-
-    .PxtZIe {
-      padding-right: 100px;
-    }
-
-    .ahQMed {
-      padding-right: 120px;
-    }
-
-    .rzhcXb {
-      padding-right: 140px;
-    }
-
-    .PBhj0b {
-      padding-right: 160px;
-    }
-
-    .TlN46c {
-      padding-right: 180px;
-    }
-
-    .GEdNnc {
-      padding-right: 200px;
-    }
-
-    .TMjjoe {
-      font-family: Lato, sans-serif;
-      font-size: 9pt;
-      line-height: 1.2;
-      margin-top: 0px;
-    }
-
-    @media only screen and (min-width: 1280px) {
-      .yxgWrb {
-        margin-left: 250px;
-      }
-    }
-
-    @media only screen and (max-width: 479px) {
-      .Zjiec {
-        font-size: 15pt;
-      }
-    }
-
-    @media only screen and (min-width: 480px) and (max-width: 767px) {
-      .Zjiec {
-        font-size: 17pt;
-      }
-    }
-
-    @media only screen and (max-width: 479px) {
-      .TlfmSc {
-        font-size: 13pt;
-      }
-    }
-
-    @media only screen and (min-width: 480px) and (max-width: 767px) {
-      .TlfmSc {
-        font-size: 14pt;
-      }
-    }
-
-    @media only screen and (max-width: 479px) {
-      .PsKE7e {
-        font-size: 12pt;
-      }
-    }
-
-    @media only screen and (min-width: 480px) and (max-width: 767px) {
-      .PsKE7e {
-        font-size: 12pt;
-      }
-    }
-
-    @media only screen and (max-width: 479px) {
-      .duRjpb {
-        font-size: 24pt;
-      }
-    }
-
-    @media only screen and (min-width: 480px) and (max-width: 767px) {
-      .duRjpb {
-        font-size: 29pt;
-      }
-    }
-
-    @media only screen and (max-width: 479px) {
-      .JYVBee {
-        font-size: 15pt;
-      }
-    }
-
-    @media only screen and (min-width: 480px) and (max-width: 767px) {
-      .JYVBee {
-        font-size: 17pt;
-      }
-    }
-
-    @media only screen and (max-width: 479px) {
-      .OmQG5e {
-        font-size: 13pt;
-      }
-    }
+  <title>GRAPPA: Generalizing and Adapting Robot Policies via Online Agentic Guidance</title>
 
-    @media only screen and (min-width: 480px) and (max-width: 767px) {
-      .OmQG5e {
-        font-size: 14pt;
-      }
-    }
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script> -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
 
-    @media only screen and (max-width: 479px) {
-      .TlfmSc {
-        font-size: 13pt;
-      }
+    function gtag() {
+      dataLayer.push(arguments);
     }
 
-    @media only screen and (min-width: 480px) and (max-width: 767px) {
-      .TlfmSc {
-        font-size: 14pt;
-      }
-    }
+    gtag('js', new Date());
 
-    @media only screen and (max-width: 479px) {
-      .PsKE7e {
-        font-size: 12pt;
-      }
-    }
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
 
-    @media only screen and (min-width: 480px) and (max-width: 767px) {
-      .PsKE7e {
-        font-size: 12pt;
-      }
-    }
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
-    @media only screen and (max-width: 479px) {
-      .TMjjoe {
-        font-size: 9pt;
-      }
-    }
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
 
-    @media only screen and (min-width: 480px) and (max-width: 767px) {
-      .TMjjoe {
-        font-size: 9pt;
-      }
-    }
-  </style>
-  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
 </head>
 
+<body>
 
-
-<body dir="ltr" itemscope itemtype="http://schema.org/WebPage" id="yDmH0d" css="yDmH0d">
-  If you are not redirected automatically, follow this <a href='https://sites.google.com/andrew.cmu.edu/grappa/home'>link</a>.
-
-  <div jscontroller="pc62j" jsmodel="iTeaXe" jsaction="rcuQ6b:WYd;GvneHb:og1FDd;vbaUQc:uAM5ec;">
-    <div jscontroller="X4BaPc"
-      jsaction="rcuQ6b:WYd;o6xM5b:Pg9eo;HuL2Hd:mHeCvf;VMhF5:FFYy5e;sk3Qmb:HI1Mdd;JIbuQc:rSzFEd(z2EeY),aSaF6e(ilzYPe);">
-      <div jscontroller="o1L5Wb" data-sitename="grappa" data-search-scope="1" data-domain="andrew.cmu.edu"
-        data-universe="1" jsmodel="fNFZH"
-        jsaction="Pe9H6d:cZFEp;O0t7nc:cC5KLb;WyADff:AQk9Jb;WMZaJ:VsGN3;hJluRd:UADL7b;zuqEgd:HI9w0;tr6QDd:Y8aXB;MxH79b:xDkBfb;JIbuQc:SPXMTb(uxAMZ),LjG1Ed(a6mxbb);BNPLhd:TbIyBd;fGqJod:Tb1xee;"
-        jsname="G0jgYd">
-        <div jsname="gYwusb" class="p9b27"></div>
-        <div jscontroller="RrXLpc" jsname="XeeWQc" role="banner"
-          jsaction="keydown:uiKYid(OH0EC);rcuQ6b:WYd;zuqEgd:ufqpf;JIbuQc:XfTnxb(lfEfFf),AlTiYc(GeGHKb),AlTiYc(m1xNUe),zZlNMe(pZn8Oc);YqO5N:ELcyfe;">
-          <div jsname="bF1uUb" class="BuY5Fd" jsaction="click:xVuwSc;"></div>
-          <div jsname="MVsrn" class="TbNlJb ">
-            <div role="button" class="U26fgb mUbCce fKz7Od h3nfre M9Bg4d" jscontroller="VXdfxd"
-              jsaction="click:cOuCgd; mousedown:UX7yZ; mouseup:lbsD7e; mouseenter:tfO1Yc; mouseleave:JywGue; focus:AHmuwe; blur:O22p3e; contextmenu:mg9Pef;touchstart:p6p2H; touchmove:FwuNnf; touchend:yfqBxc(preventDefault=true); touchcancel:JMtRjd;"
-              jsshadow jsname="GeGHKb" aria-label="Back to site" aria-disabled="false" tabindex="0"
-              data-tooltip="Back to site" data-tooltip-vertical-offset="-12" data-tooltip-horizontal-offset="0">
-              <div class="VTBa7b MbhUzd" jsname="ksKsZd"></div><span jsslot class="xjKiLb"><span class="Ce1Y1c"
-                  style="top: -12px"><svg class="V4YR2c" viewBox="0 0 24 24" focusable="false">
-                    <path d="M0 0h24v24H0z" fill="none" />
-                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
-                  </svg></span></span>
-            </div>
-            <div class="E2UJ5" jsname="M6JdT">
-              <div class="rFrNMe b7AJhc zKHdkd" jscontroller="pxq3x"
-                jsaction="clickonly:KjsqPd; focus:Jt1EX; blur:fpfTEe; input:Lg5SV" jsshadow jsname="OH0EC"
-                aria-expanded="true">
-                <div class="aCsJod oJeWuf">
-                  <div class="aXBtI I0VJ4d Wic03c"><span jsslot class="A37UZe qgcB3c iHd5yb">
-                      <div role="button" class="U26fgb mUbCce fKz7Od i3PoXe M9Bg4d" jscontroller="VXdfxd"
-                        jsaction="click:cOuCgd; mousedown:UX7yZ; mouseup:lbsD7e; mouseenter:tfO1Yc; mouseleave:JywGue; focus:AHmuwe; blur:O22p3e; contextmenu:mg9Pef;touchstart:p6p2H; touchmove:FwuNnf; touchend:yfqBxc(preventDefault=true); touchcancel:JMtRjd;"
-                        jsshadow jsname="lfEfFf" aria-label="Search" aria-disabled="false" tabindex="0"
-                        data-tooltip="Search" data-tooltip-vertical-offset="-12" data-tooltip-horizontal-offset="0">
-                        <div class="VTBa7b MbhUzd" jsname="ksKsZd"></div><span jsslot class="xjKiLb"><span
-                            class="Ce1Y1c" style="top: -12px"><svg class="vu8Pwe" viewBox="0 0 24 24" focusable="false">
-                              <path
-                                d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
-                              <path d="M0 0h24v24H0z" fill="none" />
-                            </svg></span></span>
-                      </div>
-                      <div class="EmVfjc SKShhf" data-loadingmessage="Loading…" jscontroller="qAKInc"
-                        jsaction="animationend:kWijWc;dyRcpb:dyRcpb" jsname="aZ2wEe">
-                        <div class="Cg7hO" aria-live="assertive" jsname="vyyg5"></div>
-                        <div jsname="Hxlbvc" class="xu46lf">
-                          <div class="ir3uv uWlRce co39ub">
-                            <div class="xq3j6 ERcjC">
-                              <div class="X6jHbb GOJTSe"></div>
-                            </div>
-                            <div class="HBnAAc">
-                              <div class="X6jHbb GOJTSe"></div>
-                            </div>
-                            <div class="xq3j6 dj3yTd">
-                              <div class="X6jHbb GOJTSe"></div>
-                            </div>
-                          </div>
-                          <div class="ir3uv GFoASc Cn087">
-                            <div class="xq3j6 ERcjC">
-                              <div class="X6jHbb GOJTSe"></div>
-                            </div>
-                            <div class="HBnAAc">
-                              <div class="X6jHbb GOJTSe"></div>
-                            </div>
-                            <div class="xq3j6 dj3yTd">
-                              <div class="X6jHbb GOJTSe"></div>
-                            </div>
-                          </div>
-                          <div class="ir3uv WpeOqd hfsr6b">
-                            <div class="xq3j6 ERcjC">
-                              <div class="X6jHbb GOJTSe"></div>
-                            </div>
-                            <div class="HBnAAc">
-                              <div class="X6jHbb GOJTSe"></div>
-                            </div>
-                            <div class="xq3j6 dj3yTd">
-                              <div class="X6jHbb GOJTSe"></div>
-                            </div>
-                          </div>
-                          <div class="ir3uv rHV3jf EjXFBf">
-                            <div class="xq3j6 ERcjC">
-                              <div class="X6jHbb GOJTSe"></div>
-                            </div>
-                            <div class="HBnAAc">
-                              <div class="X6jHbb GOJTSe"></div>
-                            </div>
-                            <div class="xq3j6 dj3yTd">
-                              <div class="X6jHbb GOJTSe"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div role="button" class="U26fgb mUbCce fKz7Od JyJRXe M9Bg4d" jscontroller="VXdfxd"
-                        jsaction="click:cOuCgd; mousedown:UX7yZ; mouseup:lbsD7e; mouseenter:tfO1Yc; mouseleave:JywGue; focus:AHmuwe; blur:O22p3e; contextmenu:mg9Pef;touchstart:p6p2H; touchmove:FwuNnf; touchend:yfqBxc(preventDefault=true); touchcancel:JMtRjd;"
-                        jsshadow jsname="m1xNUe" aria-label="Back to site" aria-disabled="false" tabindex="0"
-                        data-tooltip="Back to site" data-tooltip-vertical-offset="-12"
-                        data-tooltip-horizontal-offset="0">
-                        <div class="VTBa7b MbhUzd" jsname="ksKsZd"></div><span jsslot class="xjKiLb"><span
-                            class="Ce1Y1c" style="top: -12px"><svg class="V4YR2c" viewBox="0 0 24 24" focusable="false">
-                              <path d="M0 0h24v24H0z" fill="none" />
-                              <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
-                            </svg></span></span>
-                      </div>
-                    </span>
-                    <div class="Xb9hP"><input type="search" class="whsOnd zHQkBf" jsname="YPqjbf" autocomplete="off"
-                        tabindex="0" aria-label="Search this site" value="" aria-disabled="false" autofocus
-                        role="combobox" data-initial-value="" />
-                      <div jsname="LwH6nd" class="ndJi5d snByac" aria-hidden="true">Search this site</div>
-                    </div><span jsslot class="A37UZe sxyYjd MQL3Ob">
-                      <div role="button" class="U26fgb mUbCce fKz7Od Kk06A M9Bg4d" jscontroller="VXdfxd"
-                        jsaction="click:cOuCgd; mousedown:UX7yZ; mouseup:lbsD7e; mouseenter:tfO1Yc; mouseleave:JywGue; focus:AHmuwe; blur:O22p3e; contextmenu:mg9Pef;touchstart:p6p2H; touchmove:FwuNnf; touchend:yfqBxc(preventDefault=true); touchcancel:JMtRjd;"
-                        jsshadow jsname="pZn8Oc" aria-label="Clear search" aria-disabled="false" tabindex="0"
-                        data-tooltip="Clear search" data-tooltip-vertical-offset="-12"
-                        data-tooltip-horizontal-offset="0">
-                        <div class="VTBa7b MbhUzd" jsname="ksKsZd"></div><span jsslot class="xjKiLb"><span
-                            class="Ce1Y1c" style="top: -12px"><svg class="fAUEUd" viewBox="0 0 24 24" focusable="false">
-                              <path
-                                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
-                              </path>
-                              <path d="M0 0h24v24H0z" fill="none"></path>
-                            </svg></span></span>
-                      </div>
-                    </span>
-                    <div class="i9lrp mIZh1c"></div>
-                    <div jsname="XmnwAc" class="OabDMe cXrdqd"></div>
-                  </div>
-                </div>
-                <div class="LXRPh">
-                  <div jsname="ty6ygf" class="ovnfwe Is7Fhb"></div>
-                </div>
-              </div>
-              <div class="InHK7" jsname="aN0umc">
-                <div class="GG9xTc" jsaction="click:wTqBkf;" jsname="e7EaC" tabindex="0" aria-label="Embedded files">
-                  <svg class="vu8Pwe KYLCw" viewBox="0 0 24 24" focusable="false">
-                    <path
-                      d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
-                    <path d="M0 0h24v24H0z" fill="none" />
-                  </svg><span class="HCIIgf">Embedded files</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div jsname="tiN4bf">
-        <style nonce="OTl0v2-eJKyUL3Vby3fzWA">
-          .rrJNTc {
-            opacity: 0;
-          }
-
-          .bKy5e {
-            pointer-events: none;
-            position: absolute;
-            top: 0;
-          }
-        </style>
-        <div class="bKy5e">
-          <div class="rrJNTc" tabindex="-1">
-            <div class="VfPpkd-dgl2Hf-ppHlrf-sM5MNb" data-is-touch-wrapper='true'><button
-                class="VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-dgl2Hf LjDxcd XhPA0b LQeN7 WsSUlf jz7fPb" jscontroller="soHxf"
-                jsaction="click:cOuCgd; mousedown:UX7yZ; mouseup:lbsD7e; mouseenter:tfO1Yc; mouseleave:JywGue; touchstart:p6p2H; touchmove:FwuNnf; touchend:yfqBxc; touchcancel:JMtRjd; focus:AHmuwe; blur:O22p3e; contextmenu:mg9Pef;mlnRJb:fLiPzd;"
-                data-idom-class="LjDxcd XhPA0b LQeN7 WsSUlf jz7fPb" jsname="z2EeY" tabindex="0">
-                <div class="VfPpkd-Jh9lGc"></div>
-                <div class="VfPpkd-J1Ukfc-LhBDec"></div>
-                <div class="VfPpkd-RLmnJb"></div><span jsname="V67aGc" class="VfPpkd-vQzf8d">Skip to main content</span>
-              </button></div>
-            <div class="VfPpkd-dgl2Hf-ppHlrf-sM5MNb" data-is-touch-wrapper='true'><button
-                class="VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-dgl2Hf LjDxcd XhPA0b LQeN7 WsSUlf br90J" jscontroller="soHxf"
-                jsaction="click:cOuCgd; mousedown:UX7yZ; mouseup:lbsD7e; mouseenter:tfO1Yc; mouseleave:JywGue; touchstart:p6p2H; touchmove:FwuNnf; touchend:yfqBxc; touchcancel:JMtRjd; focus:AHmuwe; blur:O22p3e; contextmenu:mg9Pef;mlnRJb:fLiPzd;"
-                data-idom-class="LjDxcd XhPA0b LQeN7 WsSUlf br90J" jsname="ilzYPe" tabindex="0">
-                <div class="VfPpkd-Jh9lGc"></div>
-                <div class="VfPpkd-J1Ukfc-LhBDec"></div>
-                <div class="VfPpkd-RLmnJb"></div><span jsname="V67aGc" class="VfPpkd-vQzf8d">Skip to navigation</span>
-              </button></div>
-          </div>
-        </div>
-        <div class="M63kCb N63NQ"></div>
-        <div class="QZ3zWd">
-          <div class="fktJzd AKpWA fOU46b yMcSQd Ly6Unf G9Qloe NWW3Jd XxIgdb" jsname="UzWXSb"
-            data-uses-custom-theme="false" data-legacy-theme-name="QualityBasics" data-legacy-theme-font-kit="Light"
-            data-legacy-theme-color-kit="Custom" jscontroller="Md9ENb"
-            jsaction="gsiSmd:Ffcznf;yj5fUd:cpPetb;HNXL3:q0Vyke;e2SXKd:IPDu5e;BdXpgd:nhk7K;rcuQ6b:WYd;">
-            <header id="atIdViewHeader">
-              <div style="position:fixed; width: 100%; z-index: 100;">
-                <div id="docs-banner-container">
-                  <div id="docs-banners">
-                    <div id="HB1eCd-mzNpsf-r8s4j-ORHb"></div>
-                    <div id="HB1eCd-TZk80d-r8s4j-ORHb" aria-live="assertive" aria-atomic="true"></div>
-                  </div>
-                  <div class="HB1eCd-Vkfede-NBtyUd-PvRhvb-LwH6nd"></div>
-                </div>
-              </div>
-              <div class="BbxBP G8QRnc K5Zlne" jsname="WA9qLc" jscontroller="RQOkef"
-                jsaction="rcuQ6b:ywL4Jf;VbOlFf:ywL4Jf;FaOgy:ywL4Jf; keydown:Hq2uPe; wheel:Ut4Ahc;"
-                data-top-navigation="true" data-is-preview="false">
-                <div class="VLoccc K5Zlne ELAV1d U8eYrb" jsname="rtFGi">
-                  <div class="Pvc6xe">
-                    <div jsname="I8J07e" class="TlfmSc YSH9J"><a class="GAuSPc" jsname="jIujaf"
-                        href="/andrew.cmu.edu/grappa/home?authuser=0"><span class="QTKDff">GRAPPA</span></a></div>
-                  </div>
-                  <div jsname="mADGA" class="zDUgLc"></div>
-                </div>
-              </div>
-            </header>
-            <div tabindex="-1" class="UtePc RCETm" dir="ltr">
-              <section id="h.INITIAL_GRID.op4ahwh419s0" class="yaqOZd LB7kq gk8rDe">
-                <div class="IFuOkc"></div>
-                <div class="mYVXT">
-                  <div class="LS81yb VICjCf j5pSsc db35Fc" tabindex="-1">
-                    <div
-                      class="hJDwNd-AhqUyc-uQSCkd Ft7HRd-AhqUyc-uQSCkd purZT-AhqUyc-II5mzb ZcASvf-AhqUyc-II5mzb pSzOP-AhqUyc-qWD73c Ktthjf-AhqUyc-qWD73c JNdkSc SQVYQc yYI8W HQwdzb">
-                      <div class="JNdkSc-SmKAyb LkDMRd">
-                        <div class="" jscontroller="sGwD4d" jsaction="zXBUYb:zTPCnb;zQF9Uc:Qxe3nd;" jsname="F57UId">
-                          <div class="oKdM2c ZZyype Kzv0Me">
-                            <div id="h.INITIAL_GRID.buhvf39ukdfg"
-                              class="hJDwNd-AhqUyc-uQSCkd Ft7HRd-AhqUyc-uQSCkd jXK9ad D2fZ2 zu5uec OjCsFc dmUFtb">
-                              <div class="jXK9ad-SmKAyb">
-                                <div class="tyJCtd mGzaTb Depvyb baZpAe lkHyyc" role="main" tabindex="0">
-                                  <h1 id="h.il1dg065hrvq" dir="ltr" class="zfr3Q duRjpb CDt4Ke "
-                                    style="text-align: center;"><span class="CGqCRe C9DxTc "
-                                      style="color: #434343; font-family: &#39;Open Sans&#39;, Arial; font-weight: 700; vertical-align: baseline;">GRAPPA:
-                                    </span><span class="CGqCRe C9DxTc "
-                                      style="color: #434343; font-family: &#39;Open Sans&#39;, Arial; font-weight: 400; vertical-align: baseline;">Generalizing
-                                      and Adapting Robot Policies via Online Agentic Guidance</span></h1>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="oKdM2c ZZyype">
-                            <div id="h.e7d37a036b65079_13"
-                              class="hJDwNd-AhqUyc-uQSCkd Ft7HRd-AhqUyc-uQSCkd jXK9ad D2fZ2 zu5uec wHaque g5GTcb">
-                              <div class="jXK9ad-SmKAyb">
-                                <div class="tyJCtd mGzaTb Depvyb baZpAe">
-                                  <p dir="ltr" class="zfr3Q CDt4Ke " style="text-align: center;"><span class="C9DxTc "
-                                      style="font-family: &#39;Open Sans&#39;, Arial; font-size: 13.999999999999998pt; font-weight: 700; vertical-align: baseline;">Arthur
-                                      Bucker¹, Pablo Ortega-Kral</span><span class="C9DxTc "
-                                      style="font-family: &#39;Open Sans&#39;, Arial; font-size: 13.999999999999998pt; font-variant: normal; font-weight: 700; vertical-align: baseline;">¹</span><span
-                                      class="C9DxTc "
-                                      style="font-family: &#39;Open Sans&#39;, Arial; font-size: 13.999999999999998pt; font-weight: 700; vertical-align: baseline;">,
-                                      Jonathan Francis</span><span class="C9DxTc "
-                                      style="font-family: &#39;Open Sans&#39;, Arial; font-size: 13.999999999999998pt; font-variant: normal; font-weight: 700; vertical-align: baseline;">¹
-                                    </span><span class="C9DxTc "
-                                      style="font-family: &#39;Open Sans&#39;, Arial; font-size: 13.999999999999998pt; font-weight: 700; vertical-align: baseline;">²,
-                                      Jean Oh</span><span class="C9DxTc "
-                                      style="font-family: &#39;Open Sans&#39;, Arial; font-size: 13.999999999999998pt; font-variant: normal; font-weight: 700; vertical-align: baseline;">¹</span>
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-              <section id="h.3a030b152c10865d_9" class="yaqOZd">
-                <div class="IFuOkc"></div>
-                <div class="mYVXT">
-                  <div class="LS81yb VICjCf j5pSsc db35Fc" tabindex="-1">
-                    <div class="hJDwNd-AhqUyc-R6PoUb Ft7HRd-AhqUyc-R6PoUb JNdkSc SQVYQc L6cTce-purZT L6cTce-pSzOP">
-                      <div class="JNdkSc-SmKAyb LkDMRd">
-                        <div class="" jscontroller="sGwD4d" jsaction="zXBUYb:zTPCnb;zQF9Uc:Qxe3nd;" jsname="F57UId">
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="hJDwNd-AhqUyc-EehZO Ft7HRd-AhqUyc-EehZO purZT-AhqUyc-II5mzb ZcASvf-AhqUyc-II5mzb pSzOP-AhqUyc-qWD73c Ktthjf-AhqUyc-qWD73c JNdkSc SQVYQc">
-                      <div class="JNdkSc-SmKAyb LkDMRd">
-                        <div class="" jscontroller="sGwD4d" jsaction="zXBUYb:zTPCnb;zQF9Uc:Qxe3nd;" jsname="F57UId">
-                          <div class="oKdM2c ZZyype Kzv0Me">
-                            <div id="h.3a030b152c10865d_0"
-                              class="hJDwNd-AhqUyc-EehZO Ft7HRd-AhqUyc-EehZO jXK9ad D2fZ2 zu5uec OjCsFc dmUFtb wHaque g5GTcb">
-                              <div class="jXK9ad-SmKAyb">
-                                <div class="tyJCtd baZpAe">
-                                  <div class="t3iYD"><img
-                                      src="static/images/image1.png"
-                                      class="CENy8b" role="img"></div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="hJDwNd-AhqUyc-R6PoUb Ft7HRd-AhqUyc-R6PoUb JNdkSc SQVYQc L6cTce-purZT L6cTce-pSzOP">
-                      <div class="JNdkSc-SmKAyb LkDMRd">
-                        <div class="" jscontroller="sGwD4d" jsaction="zXBUYb:zTPCnb;zQF9Uc:Qxe3nd;" jsname="F57UId">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-              <section id="h.e7d37a036b65079_4" class="yaqOZd">
-                <div class="IFuOkc"></div>
-                <div class="mYVXT">
-                  <div class="LS81yb VICjCf j5pSsc db35Fc" tabindex="-1">
-                    <div
-                      class="hJDwNd-AhqUyc-uQSCkd Ft7HRd-AhqUyc-uQSCkd purZT-AhqUyc-II5mzb ZcASvf-AhqUyc-II5mzb pSzOP-AhqUyc-qWD73c Ktthjf-AhqUyc-qWD73c JNdkSc SQVYQc yYI8W HQwdzb">
-                      <div class="JNdkSc-SmKAyb LkDMRd">
-                        <div class="" jscontroller="sGwD4d" jsaction="zXBUYb:zTPCnb;zQF9Uc:Qxe3nd;" jsname="F57UId">
-                          <div class="oKdM2c ZZyype Kzv0Me">
-                            <div id="h.e7d37a036b65079_10"
-                              class="hJDwNd-AhqUyc-uQSCkd Ft7HRd-AhqUyc-uQSCkd jXK9ad D2fZ2 zu5uec OjCsFc dmUFtb">
-                              <div class="jXK9ad-SmKAyb">
-                                <div class="tyJCtd mGzaTb Depvyb baZpAe">
-                                  <div id="h.711xzxczne15" class="Ap4VC yMxPgf  aP9Z7e"></div>
-                                  <h1 id="h.711xzxczne15_l" dir="ltr" class="zfr3Q duRjpb CDt4Ke "
-                                    style="text-align: center;">
-                                    <div jscontroller="Ae65rd"
-                                      jsaction="touchstart:UrsOsc; click:KjsqPd; focusout:QZoaZ; mouseover:y0pDld; mouseout:dq0hvd;fv1Rjc:jbFSOd;CrfLRd:SzACGe;"
-                                      class="CjVfdc">
-                                      <div class="PPhIP rviiZ" jsname="haAclf">
-                                        <div role="presentation" class="U26fgb mUbCce fKz7Od LRAOtb Znu9nd M9Bg4d"
-                                          jscontroller="mxS5xe"
-                                          jsaction="click:cOuCgd; mousedown:UX7yZ; mouseup:lbsD7e; mouseenter:tfO1Yc; mouseleave:JywGue; focus:AHmuwe; blur:O22p3e; contextmenu:mg9Pef;"
-                                          jsshadow aria-describedby="h.711xzxczne15_l" aria-label="Copy heading link"
-                                          aria-disabled="false" data-tooltip="Copy heading link" aria-hidden="true"
-                                          data-tooltip-position="top" data-tooltip-vertical-offset="12"
-                                          data-tooltip-horizontal-offset="0"><a class="FKF6mc TpQm9d"
-                                            href="#h.711xzxczne15" aria-label="Copy heading link" jsname="hiK3ld"
-                                            role="button" aria-describedby="h.711xzxczne15_l">
-                                            <div class="VTBa7b MbhUzd" jsname="ksKsZd"></div><span jsslot
-                                              class="xjKiLb"><span class="Ce1Y1c" style="top: -11px"><svg
-                                                  class="OUGEr QdAdhf" width="22px" height="22px" viewBox="0 0 24 24"
-                                                  fill="currentColor" focusable="false">
-                                                  <path d="M0 0h24v24H0z" fill="none" />
-                                                  <path
-                                                    d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" />
-                                                </svg></span></span>
-                                          </a></div>
-                                      </div><span class="C9DxTc "
-                                        style="color: #434343; font-family: &#39;Open Sans&#39;, Arial; font-weight: 700;">Abstract</span>
-                                    </div>
-                                  </h1>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="oKdM2c ZZyype">
-                            <div id="h.e7d37a036b65079_12"
-                              class="hJDwNd-AhqUyc-uQSCkd Ft7HRd-AhqUyc-uQSCkd jXK9ad D2fZ2 zu5uec wHaque g5GTcb">
-                              <div class="jXK9ad-SmKAyb">
-                                <div class="tyJCtd mGzaTb Depvyb baZpAe">
-                                  <p dir="ltr" class="zfr3Q CDt4Ke " style="text-align: justify;"><span class="C9DxTc "
-                                      style="font-size: 12.0pt; vertical-align: baseline;">Robot learning approaches
-                                      such as behavior cloning and reinforcement learning have shown great promise in
-                                      synthesizing robot skills from human demonstrations in specific environments.
-                                      However, these approaches often require task-specific demonstrations or designing
-                                      complex simulation environments, which limits the development of generalizable and
-                                      robust policies for unseen real-world settings. Recent advances in the use of
-                                      foundation models for robotics (e.g., LLMs, VLMs) have shown great potential in
-                                      enabling systems to understand the semantics in the world from large-scale
-                                      internet data. However, it remains an open challenge to use this knowledge to
-                                      enable robotic systems to understand the underlying dynamics of the world, to
-                                      generalize policies across different tasks, and to adapt policies to new
-                                      environments. To alleviate these limitations, we propose an agentic framework for
-                                      robot self-guidance and self-improvement, which consists of a set of
-                                      role-specialized conversational agents, such as a high-level advisor, a grounding
-                                      agent, a monitoring agent, and a robotic agent. Our framework iteratively grounds
-                                      a base robot policy to relevant objects in the environment and uses visuomotor
-                                      cues to shift the action distribution of the policy to more desirable states,
-                                      online, while remaining agnostic to the subjective configuration of a given robot
-                                      hardware platform. We demonstrate that our approach can effectively guide
-                                      manipulation policies to achieve significantly higher success rates, both in
-                                      simulation and in real-world experiments, without the need for additional human
-                                      demonstrations or extensive exploration.</span></p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-              <section id="h.3a030b152c10865d_14" class="yaqOZd">
-                <div class="IFuOkc"></div>
-                <div class="mYVXT">
-                  <div class="LS81yb VICjCf j5pSsc db35Fc" tabindex="-1">
-                    <div class="hJDwNd-AhqUyc-R6PoUb Ft7HRd-AhqUyc-R6PoUb JNdkSc SQVYQc L6cTce-purZT L6cTce-pSzOP">
-                      <div class="JNdkSc-SmKAyb LkDMRd">
-                        <div class="" jscontroller="sGwD4d" jsaction="zXBUYb:zTPCnb;zQF9Uc:Qxe3nd;" jsname="F57UId">
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="hJDwNd-AhqUyc-EehZO Ft7HRd-AhqUyc-EehZO purZT-AhqUyc-II5mzb ZcASvf-AhqUyc-II5mzb pSzOP-AhqUyc-qWD73c Ktthjf-AhqUyc-qWD73c JNdkSc SQVYQc yYI8W HQwdzb">
-                      <div class="JNdkSc-SmKAyb LkDMRd">
-                        <div class="" jscontroller="sGwD4d" jsaction="zXBUYb:zTPCnb;zQF9Uc:Qxe3nd;" jsname="F57UId">
-                          <div class="oKdM2c ZZyype Kzv0Me">
-                            <div id="h.3a030b152c10865d_11"
-                              class="hJDwNd-AhqUyc-EehZO Ft7HRd-AhqUyc-EehZO jXK9ad D2fZ2 zu5uec OjCsFc dmUFtb">
-                              <div class="jXK9ad-SmKAyb">
-                                <div class="tyJCtd baZpAe">
-                                  <div class="t3iYD"><img
-                                      src="static/images/image2.png"
-                                      class="CENy8b" role="img"></div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="oKdM2c ZZyype">
-                            <div id="h.3a030b152c10865d_45"
-                              class="hJDwNd-AhqUyc-EehZO Ft7HRd-AhqUyc-EehZO jXK9ad D2fZ2 zu5uec wHaque g5GTcb">
-                              <div class="jXK9ad-SmKAyb">
-                                <div class="tyJCtd mGzaTb Depvyb baZpAe">
-                                  <p dir="ltr" class="zfr3Q CDt4Ke " style=""><span class="C9DxTc " style="">Information
-                                      flow between the agents to produce a guidance code. a) The advisor agent
-                                      orchestrates guidance code generation by collaborating with other agents and using
-                                      their feedback to refine the generated code. b) The grounding agent uses
-                                      segmentation and classification models to locate objects of interest provided by
-                                      the advisor, reporting findings back to the advisor. c) The robotic agent uses a
-                                      Python interpreter to test the code for the specific robotic platform and judge
-                                      the adequacy of the code. d) The monitor agent analyses the sequence of frames
-                                      corresponding to the rollout of the guidance and give feedback on potential
-                                      improvements.</span></p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="hJDwNd-AhqUyc-R6PoUb Ft7HRd-AhqUyc-R6PoUb JNdkSc SQVYQc L6cTce-purZT L6cTce-pSzOP">
-                      <div class="JNdkSc-SmKAyb LkDMRd">
-                        <div class="" jscontroller="sGwD4d" jsaction="zXBUYb:zTPCnb;zQF9Uc:Qxe3nd;" jsname="F57UId">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-              <section id="h.16259392ae26eb7_4" class="yaqOZd">
-                <div class="IFuOkc"></div>
-                <div class="mYVXT">
-                  <div class="LS81yb VICjCf j5pSsc db35Fc" tabindex="-1">
-                    <div
-                      class="hJDwNd-AhqUyc-uQSCkd Ft7HRd-AhqUyc-uQSCkd purZT-AhqUyc-II5mzb ZcASvf-AhqUyc-II5mzb pSzOP-AhqUyc-qWD73c Ktthjf-AhqUyc-qWD73c JNdkSc SQVYQc">
-                      <div class="JNdkSc-SmKAyb LkDMRd">
-                        <div class="" jscontroller="sGwD4d" jsaction="zXBUYb:zTPCnb;zQF9Uc:Qxe3nd;" jsname="F57UId">
-                          <div class="oKdM2c ZZyype Kzv0Me">
-                            <div id="h.16259392ae26eb7_0"
-                              class="hJDwNd-AhqUyc-uQSCkd Ft7HRd-AhqUyc-uQSCkd jXK9ad D2fZ2 zu5uec OjCsFc dmUFtb wHaque g5GTcb">
-                              <div class="jXK9ad-SmKAyb">
-                                <div class="tyJCtd mGzaTb Depvyb baZpAe">
-                                  <div id="h.ae1850spg0z" class="Ap4VC yMxPgf  aP9Z7e"></div>
-                                  <h1 id="h.ae1850spg0z_l" dir="ltr" class="zfr3Q duRjpb CDt4Ke "
-                                    style="text-align: center;">
-                                    <div jscontroller="Ae65rd"
-                                      jsaction="touchstart:UrsOsc; click:KjsqPd; focusout:QZoaZ; mouseover:y0pDld; mouseout:dq0hvd;fv1Rjc:jbFSOd;CrfLRd:SzACGe;"
-                                      class="CjVfdc">
-                                      <div class="PPhIP rviiZ" jsname="haAclf">
-                                        <div role="presentation" class="U26fgb mUbCce fKz7Od LRAOtb Znu9nd M9Bg4d"
-                                          jscontroller="mxS5xe"
-                                          jsaction="click:cOuCgd; mousedown:UX7yZ; mouseup:lbsD7e; mouseenter:tfO1Yc; mouseleave:JywGue; focus:AHmuwe; blur:O22p3e; contextmenu:mg9Pef;"
-                                          jsshadow aria-describedby="h.ae1850spg0z_l" aria-label="Copy heading link"
-                                          aria-disabled="false" data-tooltip="Copy heading link" aria-hidden="true"
-                                          data-tooltip-position="top" data-tooltip-vertical-offset="12"
-                                          data-tooltip-horizontal-offset="0"><a class="FKF6mc TpQm9d"
-                                            href="#h.ae1850spg0z" aria-label="Copy heading link" jsname="hiK3ld"
-                                            role="button" aria-describedby="h.ae1850spg0z_l">
-                                            <div class="VTBa7b MbhUzd" jsname="ksKsZd"></div><span jsslot
-                                              class="xjKiLb"><span class="Ce1Y1c" style="top: -11px"><svg
-                                                  class="OUGEr QdAdhf" width="22px" height="22px" viewBox="0 0 24 24"
-                                                  fill="currentColor" focusable="false">
-                                                  <path d="M0 0h24v24H0z" fill="none" />
-                                                  <path
-                                                    d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" />
-                                                </svg></span></span>
-                                          </a></div>
-                                      </div><span class="C9DxTc "
-                                        style="color: #434343; font-family: &#39;Open Sans&#39;, Arial; font-weight: 700;">Real
-                                        World Experiments</span>
-                                    </div>
-                                  </h1>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-              <section id="h.3a030b152c10865d_18" class="yaqOZd">
-                <div class="IFuOkc"></div>
-                <div class="mYVXT">
-                  <div class="LS81yb VICjCf j5pSsc db35Fc" tabindex="-1">
-                    <div
-                      class="hJDwNd-AhqUyc-qWD73c Ft7HRd-AhqUyc-qWD73c purZT-AhqUyc-II5mzb ZcASvf-AhqUyc-II5mzb pSzOP-AhqUyc-qWD73c Ktthjf-AhqUyc-qWD73c JNdkSc SQVYQc yYI8W HQwdzb">
-                      <div class="JNdkSc-SmKAyb LkDMRd">
-                        <div class="" jscontroller="sGwD4d" jsaction="zXBUYb:zTPCnb;zQF9Uc:Qxe3nd;" jsname="F57UId">
-                          <div class="oKdM2c ZZyype Kzv0Me">
-                            <div id="h.3a030b152c10865d_28"
-                              class="hJDwNd-AhqUyc-qWD73c Ft7HRd-AhqUyc-qWD73c jXK9ad D2fZ2 zu5uec OjCsFc dmUFtb">
-                              <div class="jXK9ad-SmKAyb">
-                                <div class="tyJCtd baZpAe">
-                                    <div class="t3iYD"><img
-                                        src="static/images/image3.png"
-                                      class="CENy8b" role="img"></div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="oKdM2c ZZyype">
-                            <div id="h.3a030b152c10865d_32"
-                              class="hJDwNd-AhqUyc-qWD73c Ft7HRd-AhqUyc-qWD73c jXK9ad D2fZ2 zu5uec">
-                              <div class="jXK9ad-SmKAyb">
-                                <div class="tyJCtd mGzaTb Depvyb baZpAe">
-                                  <p dir="ltr" class="zfr3Q CDt4Ke " style=""><span class="C9DxTc " style="">GRAPPA
-                                      guiding the base policy for out-of-distribution cases. The task involves grasping
-                                      a deformable toy ball and placing it inside a box.</span></p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="oKdM2c ZZyype">
-                            <div id="h.3a030b152c10865d_34"
-                              class="hJDwNd-AhqUyc-qWD73c Ft7HRd-AhqUyc-qWD73c jXK9ad D2fZ2 zu5uec wHaque g5GTcb">
-                              <div class="jXK9ad-SmKAyb">
-                                <div class="tyJCtd baZpAe">
-                                  <div class="t3iYD"><img
-                                      src="static/images/image4.png"
-                                      class="CENy8b" role="img"></div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="hJDwNd-AhqUyc-R6PoUb Ft7HRd-AhqUyc-R6PoUb JNdkSc SQVYQc L6cTce-purZT L6cTce-pSzOP">
-                      <div class="JNdkSc-SmKAyb LkDMRd">
-                        <div class="" jscontroller="sGwD4d" jsaction="zXBUYb:zTPCnb;zQF9Uc:Qxe3nd;" jsname="F57UId">
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="hJDwNd-AhqUyc-wNfPc Ft7HRd-AhqUyc-wNfPc purZT-AhqUyc-II5mzb ZcASvf-AhqUyc-II5mzb pSzOP-AhqUyc-wNfPc Ktthjf-AhqUyc-wNfPc JNdkSc SQVYQc yYI8W HQwdzb">
-                      <div class="JNdkSc-SmKAyb LkDMRd">
-                        <div class="" jscontroller="sGwD4d" jsaction="zXBUYb:zTPCnb;zQF9Uc:Qxe3nd;" jsname="F57UId">
-                          <div class="oKdM2c ZZyype Kzv0Me">
-                            <div id="h.3a030b152c10865d_15"
-                              class="hJDwNd-AhqUyc-wNfPc Ft7HRd-AhqUyc-wNfPc pSzOP-AhqUyc-wNfPc Ktthjf-AhqUyc-wNfPc jXK9ad D2fZ2 zu5uec OjCsFc dmUFtb">
-                              <div class="jXK9ad-SmKAyb">
-                                <div class="tyJCtd baZpAe">
-                                  <div class="t3iYD"><img
-                                      src="static/images/image5.png"
-                                      class="CENy8b" role="img"></div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="oKdM2c ZZyype">
-                            <div id="h.3a030b152c10865d_24"
-                              class="hJDwNd-AhqUyc-wNfPc Ft7HRd-AhqUyc-wNfPc pSzOP-AhqUyc-wNfPc Ktthjf-AhqUyc-wNfPc jXK9ad D2fZ2 zu5uec wHaque g5GTcb">
-                              <div class="jXK9ad-SmKAyb">
-                                <div class="tyJCtd mGzaTb Depvyb baZpAe">
-                                  <p dir="ltr" class="zfr3Q CDt4Ke " style=""><span class="C9DxTc "
-                                      style="">Illustration of the effect of different guidance percentages on a failure
-                                      case of the base policy. In red we show the base policy failing in an
-                                      out-of-distribution scenario; with 100\% of guidance (yellow), the end position is
-                                      successfully above the box, but it has \textit{lost low-level notions}. By
-                                      balancing both with intermediate guidance (50\%) shown in green, we can complete
-                                      the task.</span></p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-              <section id="h.39dad6d7b9aba05b_3" class="yaqOZd">
-                <div class="IFuOkc"></div>
-                <div class="mYVXT">
-                  <div class="LS81yb VICjCf j5pSsc db35Fc" tabindex="-1">
-                    <div
-                      class="hJDwNd-AhqUyc-qWD73c Ft7HRd-AhqUyc-qWD73c purZT-AhqUyc-II5mzb ZcASvf-AhqUyc-II5mzb pSzOP-AhqUyc-qWD73c Ktthjf-AhqUyc-qWD73c JNdkSc SQVYQc">
-                      <div class="JNdkSc-SmKAyb LkDMRd">
-                        <div class="" jscontroller="sGwD4d" jsaction="zXBUYb:zTPCnb;zQF9Uc:Qxe3nd;" jsname="F57UId">
-                          <div class="oKdM2c ZZyype Kzv0Me">
-                            <div id="h.39dad6d7b9aba05b_0"
-                              class="hJDwNd-AhqUyc-qWD73c Ft7HRd-AhqUyc-qWD73c jXK9ad D2fZ2 zu5uec OjCsFc dmUFtb wHaque g5GTcb">
-                              <div class="jXK9ad-SmKAyb">
-                                <div class="tyJCtd OWlOyc baZpAe">
-                                  <div jscontroller="VYKRW" jsaction="rcuQ6b:rcuQ6b;">
-                                    <div class="WIdY2d M1aSXe">
-                                      <div jsname="WXxXjd" style="padding-top: 67.9715302491%"></div><iframe
-                                        jsname="L5Fo6c" class="YMEQtf"
-                                        sandbox="allow-scripts allow-popups allow-forms allow-same-origin allow-popups-to-escape-sandbox allow-downloads allow-modals allow-storage-access-by-user-activation"
-                                        frameborder="0" aria-label="YouTube Video, Chess Demo:MotorCortex"
-                                        src="https://www.youtube.com/embed/6uGDJi_ELPc?embed_config=%7B%22enc%22:%22AXH1ezkStcekK2hcviVcWq2dZi0ZaOI4rhs80qA3bw2JZaQQTEVDg7FplVY5YqVoFa4A6LJYPMpoC-qPs8iqu1rBgmIB3IBs3yP3mMz1rpFAeLrgCxs2uvTv6X5nLE04d7-09dMUxz3nzDRkw4KqxoA8Xiget-sMV0qRlFBD8ogAb6_Z%22%7D&amp;errorlinks=1&amp;rct=CpcBAXH1ezmDlQJMlp-beCpHXkxu8lEqLrfnxdjulV0jnS7zh2skPUuf_xwt1HhCoBiNjv8jYPlb7njx76nWhNOAyotHat-xNKiwzm8_bX-FdoKhIKB34JvnB6TFbT_rZf99mNc5EUIp79Xl3Fv1bOayZS5i0sOCjnCoJYYvQYoodowzs177TIYbemDmrq2UJupRMQDmE83PQQ%3D%3D"
-                                        allowfullscreen></iframe>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="hJDwNd-AhqUyc-qWD73c Ft7HRd-AhqUyc-qWD73c purZT-AhqUyc-II5mzb ZcASvf-AhqUyc-II5mzb pSzOP-AhqUyc-qWD73c Ktthjf-AhqUyc-qWD73c JNdkSc SQVYQc">
-                      <div class="JNdkSc-SmKAyb LkDMRd">
-                        <div class="" jscontroller="sGwD4d" jsaction="zXBUYb:zTPCnb;zQF9Uc:Qxe3nd;" jsname="F57UId">
-                          <div class="oKdM2c ZZyype Kzv0Me">
-                            <div id="h.39dad6d7b9aba05b_4"
-                              class="hJDwNd-AhqUyc-qWD73c Ft7HRd-AhqUyc-qWD73c jXK9ad D2fZ2 zu5uec OjCsFc dmUFtb wHaque g5GTcb">
-                              <div class="jXK9ad-SmKAyb">
-                                <div class="tyJCtd OWlOyc baZpAe">
-                                  <div jscontroller="VYKRW" jsaction="rcuQ6b:rcuQ6b;">
-                                    <div class="WIdY2d M1aSXe">
-                                      <div jsname="WXxXjd" style="padding-top: 67.8518518519%"></div><iframe
-                                        jsname="L5Fo6c" class="YMEQtf"
-                                        sandbox="allow-scripts allow-popups allow-forms allow-same-origin allow-popups-to-escape-sandbox allow-downloads allow-modals allow-storage-access-by-user-activation"
-                                        frameborder="0" aria-label="YouTube Video, Button Pressing Demo"
-                                        src="https://www.youtube.com/embed/TW6MKvfFojg?embed_config=%7B%22enc%22:%22AXH1ezn6uZiW0ytu3CnLNNMN7Td9ok8feUZvWP42QOTW1jGeJY4d_Rjq6RmMdsI4kgmlmP_2Hq5Bfo2pNli0xrAR65uHwbvhLd2q9DZXnd3nEy29sujLCWLJZeAJVKjyhkvo365nxpChUg3Og156Q4mDzfxyOCLHqFWyUasg5mUnQonO%22%7D&amp;errorlinks=1&amp;rct=CpcBAXH1ezkv9Lz5EOvIMk_5fi19Ygdi_0p1icGu6gGUcgpaE7HbbAHomQXnanEzispYKWXD53TwRFln44RYHOPCA-cAPzBISJG-78WC0y0KXkBh-D-gw4VFIZqlDxgmgqH_RfWnSqlTvlF3b-GM4zqwUgOzUvbVk0afuaY64i30o8xvsT96UpQqSzpTfBe4JnLXEruM72evhg%3D%3D"
-                                        allowfullscreen></iframe>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-              <section id="h.5516b7494316e4e1_4" class="yaqOZd">
-                <div class="IFuOkc"></div>
-                <div class="mYVXT">
-                  <div class="LS81yb VICjCf j5pSsc db35Fc" tabindex="-1">
-                    <div
-                      class="hJDwNd-AhqUyc-uQSCkd Ft7HRd-AhqUyc-uQSCkd purZT-AhqUyc-II5mzb ZcASvf-AhqUyc-II5mzb pSzOP-AhqUyc-qWD73c Ktthjf-AhqUyc-qWD73c JNdkSc SQVYQc">
-                      <div class="JNdkSc-SmKAyb LkDMRd">
-                        <div class="" jscontroller="sGwD4d" jsaction="zXBUYb:zTPCnb;zQF9Uc:Qxe3nd;" jsname="F57UId">
-                          <div class="oKdM2c ZZyype Kzv0Me">
-                            <div id="h.5516b7494316e4e1_0"
-                              class="hJDwNd-AhqUyc-uQSCkd Ft7HRd-AhqUyc-uQSCkd jXK9ad D2fZ2 zu5uec OjCsFc dmUFtb wHaque g5GTcb">
-                              <div class="jXK9ad-SmKAyb">
-                                <div class="tyJCtd mGzaTb Depvyb baZpAe">
-                                  <div id="h.gq90f52k1onx" class="Ap4VC yMxPgf  aP9Z7e"></div>
-                                  <h1 id="h.gq90f52k1onx_l" dir="ltr" class="zfr3Q duRjpb CDt4Ke "
-                                    style="text-align: center;">
-                                    <div jscontroller="Ae65rd"
-                                      jsaction="touchstart:UrsOsc; click:KjsqPd; focusout:QZoaZ; mouseover:y0pDld; mouseout:dq0hvd;fv1Rjc:jbFSOd;CrfLRd:SzACGe;"
-                                      class="CjVfdc">
-                                      <div class="PPhIP rviiZ" jsname="haAclf">
-                                        <div role="presentation" class="U26fgb mUbCce fKz7Od LRAOtb Znu9nd M9Bg4d"
-                                          jscontroller="mxS5xe"
-                                          jsaction="click:cOuCgd; mousedown:UX7yZ; mouseup:lbsD7e; mouseenter:tfO1Yc; mouseleave:JywGue; focus:AHmuwe; blur:O22p3e; contextmenu:mg9Pef;"
-                                          jsshadow aria-describedby="h.gq90f52k1onx_l" aria-label="Copy heading link"
-                                          aria-disabled="false" data-tooltip="Copy heading link" aria-hidden="true"
-                                          data-tooltip-position="top" data-tooltip-vertical-offset="12"
-                                          data-tooltip-horizontal-offset="0"><a class="FKF6mc TpQm9d"
-                                            href="#h.gq90f52k1onx" aria-label="Copy heading link" jsname="hiK3ld"
-                                            role="button" aria-describedby="h.gq90f52k1onx_l">
-                                            <div class="VTBa7b MbhUzd" jsname="ksKsZd"></div><span jsslot
-                                              class="xjKiLb"><span class="Ce1Y1c" style="top: -11px"><svg
-                                                  class="OUGEr QdAdhf" width="22px" height="22px" viewBox="0 0 24 24"
-                                                  fill="currentColor" focusable="false">
-                                                  <path d="M0 0h24v24H0z" fill="none" />
-                                                  <path
-                                                    d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" />
-                                                </svg></span></span>
-                                          </a></div>
-                                      </div><span class="C9DxTc "
-                                        style="color: #434343; font-family: &#39;Open Sans&#39;, Arial; font-weight: 700;">Simulation
-                                      </span><span class="C9DxTc "
-                                        style="color: #434343; font-family: &#39;Open Sans&#39;, Arial; font-variant: normal; font-weight: 700;">
-                                        Experiments</span>
-                                    </div>
-                                  </h1>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-              <section id="h.5516b7494316e4e1_76" class="yaqOZd">
-                <div class="IFuOkc"></div>
-                <div class="mYVXT">
-                  <div class="LS81yb VICjCf j5pSsc db35Fc" tabindex="-1">
-                    <div
-                      class="hJDwNd-AhqUyc-uQSCkd Ft7HRd-AhqUyc-uQSCkd purZT-AhqUyc-II5mzb ZcASvf-AhqUyc-II5mzb pSzOP-AhqUyc-qWD73c Ktthjf-AhqUyc-qWD73c JNdkSc SQVYQc">
-                      <div class="JNdkSc-SmKAyb LkDMRd">
-                        <div class="" jscontroller="sGwD4d" jsaction="zXBUYb:zTPCnb;zQF9Uc:Qxe3nd;" jsname="F57UId">
-                          <div class="oKdM2c ZZyype Kzv0Me">
-                            <div id="h.5516b7494316e4e1_64"
-                              class="hJDwNd-AhqUyc-uQSCkd Ft7HRd-AhqUyc-uQSCkd jXK9ad D2fZ2 zu5uec OjCsFc dmUFtb wHaque g5GTcb">
-                              <div class="jXK9ad-SmKAyb">
-                                <div class="tyJCtd mGzaTb Depvyb baZpAe">
-                                  <p dir="ltr" class="zfr3Q CDt4Ke " style="text-align: center;"><span class="C9DxTc "
-                                      style="color: #999999; font-size: 13.999999999999998pt; vertical-align: baseline;">Example
-                                      - Task: </span><span class="C9DxTc "
-                                      style="font-size: 13.999999999999998pt; vertical-align: baseline;">&quot;P</span><span
-                                      class="C9DxTc "
-                                      style="font-size: 13.999999999999998pt; vertical-align: baseline;">ress the
-                                    </span><span class="C9DxTc "
-                                      style="color: #783f04; font-family: Lato, Arial; font-size: 13.999999999999998pt; font-weight: 700; vertical-align: baseline;">maroon
-                                      button</span><span class="C9DxTc "
-                                      style="font-size: 13.999999999999998pt; vertical-align: baseline;">, then press
-                                      the </span><span class="C9DxTc "
-                                      style="color: #38761d; font-family: Lato, Arial; font-size: 13.999999999999998pt; font-weight: 700; vertical-align: baseline;">green
-                                      button</span><span class="C9DxTc "
-                                      style="font-size: 13.999999999999998pt; vertical-align: baseline;">, then press
-                                      the </span><span class="C9DxTc "
-                                      style="color: #0000ff; font-family: Lato, Arial; font-size: 13.999999999999998pt; font-weight: 700; vertical-align: baseline;">navy
-                                      button</span><span class="C9DxTc "
-                                      style="color: #000000; font-size: 13.999999999999998pt; vertical-align: baseline;">&quot;</span>
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-              <section id="h.5516b7494316e4e1_30" class="yaqOZd">
-                <div class="IFuOkc"></div>
-                <div class="mYVXT">
-                  <div class="LS81yb VICjCf j5pSsc db35Fc" tabindex="-1">
-                    <div
-                      class="hJDwNd-AhqUyc-II5mzb Ft7HRd-AhqUyc-II5mzb purZT-AhqUyc-II5mzb ZcASvf-AhqUyc-II5mzb pSzOP-AhqUyc-II5mzb Ktthjf-AhqUyc-II5mzb JNdkSc SQVYQc yYI8W HQwdzb">
-                      <div class="JNdkSc-SmKAyb LkDMRd">
-                        <div class="" jscontroller="sGwD4d" jsaction="zXBUYb:zTPCnb;zQF9Uc:Qxe3nd;" jsname="F57UId">
-                          <div class="oKdM2c ZZyype Kzv0Me">
-                            <div id="h.5516b7494316e4e1_53"
-                              class="hJDwNd-AhqUyc-II5mzb Ft7HRd-AhqUyc-II5mzb pSzOP-AhqUyc-II5mzb Ktthjf-AhqUyc-II5mzb jXK9ad D2fZ2 zu5uec OjCsFc dmUFtb">
-                              <div class="jXK9ad-SmKAyb">
-                                <div class="tyJCtd baZpAe">
-                                  <div class="t3iYD"><img
-                                      src="static/images/detections_0.gif"
-                                      class="CENy8b" role="img" style="width: 100%; margin: 0% 0 0% 0%"></div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="oKdM2c ZZyype">
-                            <div id="h.5516b7494316e4e1_35"
-                              class="hJDwNd-AhqUyc-II5mzb Ft7HRd-AhqUyc-II5mzb pSzOP-AhqUyc-II5mzb Ktthjf-AhqUyc-II5mzb jXK9ad D2fZ2 zu5uec">
-                              <div class="jXK9ad-SmKAyb">
-                                <div class="tyJCtd mGzaTb Depvyb baZpAe">
-                                  <div id="h.itxmkxl0hyng" class="CobnVe yMxPgf  aP9Z7e"></div>
-                                  <h2 id="h.itxmkxl0hyng_l" dir="ltr" class="zfr3Q JYVBee CDt4Ke "
-                                    style="text-align: center;">
-                                    <div jscontroller="Ae65rd"
-                                      jsaction="touchstart:UrsOsc; click:KjsqPd; focusout:QZoaZ; mouseover:y0pDld; mouseout:dq0hvd;fv1Rjc:jbFSOd;CrfLRd:SzACGe;"
-                                      class="CjVfdc">
-                                      <div class="PPhIP rviiZ" jsname="haAclf">
-                                        <div role="presentation" class="U26fgb mUbCce fKz7Od LRAOtb Znu9nd M9Bg4d"
-                                          jscontroller="mxS5xe"
-                                          jsaction="click:cOuCgd; mousedown:UX7yZ; mouseup:lbsD7e; mouseenter:tfO1Yc; mouseleave:JywGue; focus:AHmuwe; blur:O22p3e; contextmenu:mg9Pef;"
-                                          jsshadow aria-describedby="h.itxmkxl0hyng_l" aria-label="Copy heading link"
-                                          aria-disabled="false" data-tooltip="Copy heading link" aria-hidden="true"
-                                          data-tooltip-position="top" data-tooltip-vertical-offset="12"
-                                          data-tooltip-horizontal-offset="0"><a class="FKF6mc TpQm9d"
-                                            href="#h.itxmkxl0hyng" aria-label="Copy heading link" jsname="hiK3ld"
-                                            role="button" aria-describedby="h.itxmkxl0hyng_l">
-                                            <div class="VTBa7b MbhUzd" jsname="ksKsZd"></div><span jsslot
-                                              class="xjKiLb"><span class="Ce1Y1c" style="top: -11px"><svg
-                                                  class="OUGEr QdAdhf" width="22px" height="22px" viewBox="0 0 24 24"
-                                                  fill="currentColor" focusable="false">
-                                                  <path d="M0 0h24v24H0z" fill="none" />
-                                                  <path
-                                                    d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" />
-                                                </svg></span></span>
-                                          </a></div>
-                                      </div><span class="C9DxTc "
-                                        style="color: #cc0000; font-family: Lato, Arial; font-weight: 700;">Pretrained
-                                        Act3d failing </span>
-                                    </div>
-                                  </h2>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="oKdM2c ZZyype">
-                            <div id="h.5516b7494316e4e1_37"
-                              class="hJDwNd-AhqUyc-II5mzb Ft7HRd-AhqUyc-II5mzb pSzOP-AhqUyc-II5mzb Ktthjf-AhqUyc-II5mzb jXK9ad D2fZ2 zu5uec wHaque g5GTcb">
-                              <div class="jXK9ad-SmKAyb">
-                                <div class="tyJCtd mGzaTb Depvyb baZpAe">
-                                  <p dir="ltr" class="zfr3Q CDt4Ke " style="text-align: center;"><span class="C9DxTc "
-                                      style="">Act3d with no guidance: the policy fails to press the last button (blue),
-                                      but manages to correctly approach the first 2 buttons reaching them from above
-                                      with the gripper closed.</span></p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="hJDwNd-AhqUyc-II5mzb Ft7HRd-AhqUyc-II5mzb purZT-AhqUyc-II5mzb ZcASvf-AhqUyc-II5mzb pSzOP-AhqUyc-II5mzb Ktthjf-AhqUyc-II5mzb JNdkSc SQVYQc yYI8W HQwdzb">
-                      <div class="JNdkSc-SmKAyb LkDMRd">
-                        <div class="" jscontroller="sGwD4d" jsaction="zXBUYb:zTPCnb;zQF9Uc:Qxe3nd;" jsname="F57UId">
-                          <div class="oKdM2c ZZyype Kzv0Me">
-                            <div id="h.5516b7494316e4e1_55"
-                              class="hJDwNd-AhqUyc-II5mzb Ft7HRd-AhqUyc-II5mzb pSzOP-AhqUyc-II5mzb Ktthjf-AhqUyc-II5mzb jXK9ad D2fZ2 zu5uec OjCsFc dmUFtb">
-                              <div class="jXK9ad-SmKAyb">
-                                <div class="tyJCtd baZpAe">
-                                  <div class="t3iYD"><img
-                                    src="static/images/detections_1.gif"
-                                    class="CENy8b" role="img"></div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="oKdM2c ZZyype">
-                            <div id="h.5516b7494316e4e1_42"
-                              class="hJDwNd-AhqUyc-II5mzb Ft7HRd-AhqUyc-II5mzb pSzOP-AhqUyc-II5mzb Ktthjf-AhqUyc-II5mzb jXK9ad D2fZ2 zu5uec">
-                              <div class="jXK9ad-SmKAyb">
-                                <div class="tyJCtd mGzaTb Depvyb baZpAe">
-                                  <div id="h.fxmmlyi5si00" class="CobnVe yMxPgf  aP9Z7e"></div>
-                                  <h2 id="h.fxmmlyi5si00_l" dir="ltr" class="zfr3Q JYVBee CDt4Ke "
-                                    style="text-align: center;">
-                                    <div jscontroller="Ae65rd"
-                                      jsaction="touchstart:UrsOsc; click:KjsqPd; focusout:QZoaZ; mouseover:y0pDld; mouseout:dq0hvd;fv1Rjc:jbFSOd;CrfLRd:SzACGe;"
-                                      class="CjVfdc">
-                                      <div class="PPhIP rviiZ" jsname="haAclf">
-                                        <div role="presentation" class="U26fgb mUbCce fKz7Od LRAOtb Znu9nd M9Bg4d"
-                                          jscontroller="mxS5xe"
-                                          jsaction="click:cOuCgd; mousedown:UX7yZ; mouseup:lbsD7e; mouseenter:tfO1Yc; mouseleave:JywGue; focus:AHmuwe; blur:O22p3e; contextmenu:mg9Pef;"
-                                          jsshadow aria-describedby="h.fxmmlyi5si00_l" aria-label="Copy heading link"
-                                          aria-disabled="false" data-tooltip="Copy heading link" aria-hidden="true"
-                                          data-tooltip-position="top" data-tooltip-vertical-offset="12"
-                                          data-tooltip-horizontal-offset="0"><a class="FKF6mc TpQm9d"
-                                            href="#h.fxmmlyi5si00" aria-label="Copy heading link" jsname="hiK3ld"
-                                            role="button" aria-describedby="h.fxmmlyi5si00_l">
-                                            <div class="VTBa7b MbhUzd" jsname="ksKsZd"></div><span jsslot
-                                              class="xjKiLb"><span class="Ce1Y1c" style="top: -11px"><svg
-                                                  class="OUGEr QdAdhf" width="22px" height="22px" viewBox="0 0 24 24"
-                                                  fill="currentColor" focusable="false">
-                                                  <path d="M0 0h24v24H0z" fill="none" />
-                                                  <path
-                                                    d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" />
-                                                </svg></span></span>
-                                          </a></div>
-                                      </div><span class="C9DxTc "
-                                        style="color: #b45f06; font-family: Lato, Arial; font-weight: 700;">100%
-                                        guidance</span>
-                                    </div>
-                                  </h2>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="oKdM2c ZZyype">
-                            <div id="h.5516b7494316e4e1_44"
-                              class="hJDwNd-AhqUyc-II5mzb Ft7HRd-AhqUyc-II5mzb pSzOP-AhqUyc-II5mzb Ktthjf-AhqUyc-II5mzb jXK9ad D2fZ2 zu5uec wHaque g5GTcb">
-                              <div class="jXK9ad-SmKAyb">
-                                <div class="tyJCtd mGzaTb Depvyb baZpAe">
-                                  <p dir="ltr" class="zfr3Q CDt4Ke " style="text-align: center;"><span class="C9DxTc "
-                                      style="">Guidance only (overwriting the base policy): The sequence of movements is
-                                      correct, but the initial guidance code doesn’t account that the buttons should be
-                                      approached from above.</span></p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="hJDwNd-AhqUyc-II5mzb Ft7HRd-AhqUyc-II5mzb purZT-AhqUyc-II5mzb ZcASvf-AhqUyc-II5mzb pSzOP-AhqUyc-II5mzb Ktthjf-AhqUyc-II5mzb JNdkSc SQVYQc yYI8W HQwdzb">
-                      <div class="JNdkSc-SmKAyb LkDMRd">
-                        <div class="" jscontroller="sGwD4d" jsaction="zXBUYb:zTPCnb;zQF9Uc:Qxe3nd;" jsname="F57UId">
-                          <div class="oKdM2c ZZyype Kzv0Me">
-                            <div id="h.5516b7494316e4e1_54"
-                              class="hJDwNd-AhqUyc-II5mzb Ft7HRd-AhqUyc-II5mzb pSzOP-AhqUyc-II5mzb Ktthjf-AhqUyc-II5mzb jXK9ad D2fZ2 zu5uec OjCsFc dmUFtb">
-                              <div class="jXK9ad-SmKAyb">
-                                <div class="tyJCtd baZpAe">
-                                  <div class="t3iYD"><img
-                                    src="static/images/detections_0.01.gif"  
-                                    class="CENy8b" role="img"></div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="oKdM2c ZZyype">
-                            <div id="h.5516b7494316e4e1_49"
-                              class="hJDwNd-AhqUyc-II5mzb Ft7HRd-AhqUyc-II5mzb pSzOP-AhqUyc-II5mzb Ktthjf-AhqUyc-II5mzb jXK9ad D2fZ2 zu5uec">
-                              <div class="jXK9ad-SmKAyb">
-                                <div class="tyJCtd mGzaTb Depvyb baZpAe">
-                                  <div id="h.4k4c3oamhiu3" class="CobnVe yMxPgf  aP9Z7e"></div>
-                                  <h2 id="h.4k4c3oamhiu3_l" dir="ltr" class="zfr3Q JYVBee CDt4Ke "
-                                    style="text-align: center;">
-                                    <div jscontroller="Ae65rd"
-                                      jsaction="touchstart:UrsOsc; click:KjsqPd; focusout:QZoaZ; mouseover:y0pDld; mouseout:dq0hvd;fv1Rjc:jbFSOd;CrfLRd:SzACGe;"
-                                      class="CjVfdc">
-                                      <div class="PPhIP rviiZ" jsname="haAclf">
-                                        <div role="presentation" class="U26fgb mUbCce fKz7Od LRAOtb Znu9nd M9Bg4d"
-                                          jscontroller="mxS5xe"
-                                          jsaction="click:cOuCgd; mousedown:UX7yZ; mouseup:lbsD7e; mouseenter:tfO1Yc; mouseleave:JywGue; focus:AHmuwe; blur:O22p3e; contextmenu:mg9Pef;"
-                                          jsshadow aria-describedby="h.4k4c3oamhiu3_l" aria-label="Copy heading link"
-                                          aria-disabled="false" data-tooltip="Copy heading link" aria-hidden="true"
-                                          data-tooltip-position="top" data-tooltip-vertical-offset="12"
-                                          data-tooltip-horizontal-offset="0"><a class="FKF6mc TpQm9d"
-                                            href="#h.4k4c3oamhiu3" aria-label="Copy heading link" jsname="hiK3ld"
-                                            role="button" aria-describedby="h.4k4c3oamhiu3_l">
-                                            <div class="VTBa7b MbhUzd" jsname="ksKsZd"></div><span jsslot
-                                              class="xjKiLb"><span class="Ce1Y1c" style="top: -11px"><svg
-                                                  class="OUGEr QdAdhf" width="22px" height="22px" viewBox="0 0 24 24"
-                                                  fill="currentColor" focusable="false">
-                                                  <path d="M0 0h24v24H0z" fill="none" />
-                                                  <path
-                                                    d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" />
-                                                </svg></span></span>
-                                          </a></div>
-                                      </div><span class="C9DxTc "
-                                        style="color: #38761d; font-family: Lato, Arial; font-weight: 700;">Act3d + 1%
-                                        of guidance</span>
-                                    </div>
-                                  </h2>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="oKdM2c ZZyype">
-                            <div id="h.5516b7494316e4e1_51"
-                              class="hJDwNd-AhqUyc-II5mzb Ft7HRd-AhqUyc-II5mzb pSzOP-AhqUyc-II5mzb Ktthjf-AhqUyc-II5mzb jXK9ad D2fZ2 zu5uec wHaque g5GTcb">
-                              <div class="jXK9ad-SmKAyb">
-                                <div class="tyJCtd mGzaTb Depvyb baZpAe">
-                                  <p dir="ltr" class="zfr3Q CDt4Ke " style="text-align: center;"><span class="C9DxTc "
-                                      style="">Act3d with 1% guidance: The modified policy captures both the low-level
-                                      motion of the pre-trained policy and the high-level guidance provided,
-                                      successfully pressing the sequence of buttons.</span></p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-              <section id="h.3a030b152c10865d_42" class="yaqOZd">
-                <div class="IFuOkc"></div>
-                <div class="mYVXT">
-                  <div class="LS81yb VICjCf j5pSsc db35Fc" tabindex="-1">
-                    <div
-                      class="hJDwNd-AhqUyc-uQSCkd Ft7HRd-AhqUyc-uQSCkd purZT-AhqUyc-II5mzb ZcASvf-AhqUyc-II5mzb pSzOP-AhqUyc-qWD73c Ktthjf-AhqUyc-qWD73c JNdkSc SQVYQc yYI8W HQwdzb">
-                      <div class="JNdkSc-SmKAyb LkDMRd">
-                        <div class="" jscontroller="sGwD4d" jsaction="zXBUYb:zTPCnb;zQF9Uc:Qxe3nd;" jsname="F57UId">
-                          <div class="oKdM2c ZZyype Kzv0Me">
-                            <div id="h.3a030b152c10865d_43"
-                              class="hJDwNd-AhqUyc-uQSCkd Ft7HRd-AhqUyc-uQSCkd jXK9ad D2fZ2 zu5uec OjCsFc dmUFtb">
-                              <div class="jXK9ad-SmKAyb">
-                                <div class="tyJCtd mGzaTb Depvyb baZpAe">
-                                  <p dir="ltr" class="zfr3Q CDt4Ke " style=""><span class="C9DxTc " style="">TABLE I:
-                                      Performance improvement on the RL-Bench [16] benchmark, by applying 5 iterations
-                                      of guidance improvement over unsuccessful rollouts.</span></p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="oKdM2c ZZyype">
-                            <div id="h.3a030b152c10865d_39"
-                              class="hJDwNd-AhqUyc-uQSCkd Ft7HRd-AhqUyc-uQSCkd jXK9ad D2fZ2 zu5uec wHaque g5GTcb">
-                              <div class="jXK9ad-SmKAyb">
-                                <div class="tyJCtd baZpAe">
-                                  <div class="t3iYD"><img
-                                      src="static/images/table.png"
-                                      class="CENy8b" role="img"></div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-              <section id="h.69a228a7e3f27aea_3" class="yaqOZd">
-                <div class="IFuOkc"></div>
-                <div class="mYVXT">
-                  <div class="LS81yb VICjCf j5pSsc db35Fc" tabindex="-1">
-                    <div
-                      class="hJDwNd-AhqUyc-uQSCkd Ft7HRd-AhqUyc-uQSCkd purZT-AhqUyc-II5mzb ZcASvf-AhqUyc-II5mzb pSzOP-AhqUyc-qWD73c Ktthjf-AhqUyc-qWD73c JNdkSc SQVYQc">
-                      <div class="JNdkSc-SmKAyb LkDMRd">
-                        <div class="" jscontroller="sGwD4d" jsaction="zXBUYb:zTPCnb;zQF9Uc:Qxe3nd;" jsname="F57UId">
-                          <div class="oKdM2c ZZyype Kzv0Me">
-                            <div id="h.69a228a7e3f27aea_0"
-                              class="hJDwNd-AhqUyc-uQSCkd Ft7HRd-AhqUyc-uQSCkd jXK9ad D2fZ2 zu5uec OjCsFc dmUFtb wHaque g5GTcb">
-                              <div class="jXK9ad-SmKAyb">
-                                <div class="tyJCtd mGzaTb Depvyb baZpAe">
-                                  <div id="h.lkih0mq1tcah" class="CobnVe yMxPgf  aP9Z7e"></div>
-                                  <h2 id="h.lkih0mq1tcah_l" dir="ltr" class="zfr3Q JYVBee CDt4Ke "
-                                    style="background-color: transparent; border-bottom: none; border-left: none; border-right: none; border-top: none; line-height: 1.3499999999999999; margin-bottom: 4.0pt; margin-top: 0.0pt; padding-bottom: 0.0pt; padding-left: 0.0pt; padding-right: 0.0pt; padding-top: 0.0pt;">
-                                    <div jscontroller="Ae65rd"
-                                      jsaction="touchstart:UrsOsc; click:KjsqPd; focusout:QZoaZ; mouseover:y0pDld; mouseout:dq0hvd;fv1Rjc:jbFSOd;CrfLRd:SzACGe;"
-                                      class="CjVfdc">
-                                      <div class="PPhIP rviiZ" jsname="haAclf">
-                                        <div role="presentation" class="U26fgb mUbCce fKz7Od LRAOtb Znu9nd M9Bg4d"
-                                          jscontroller="mxS5xe"
-                                          jsaction="click:cOuCgd; mousedown:UX7yZ; mouseup:lbsD7e; mouseenter:tfO1Yc; mouseleave:JywGue; focus:AHmuwe; blur:O22p3e; contextmenu:mg9Pef;"
-                                          jsshadow aria-describedby="h.lkih0mq1tcah_l" aria-label="Copy heading link"
-                                          aria-disabled="false" data-tooltip="Copy heading link" aria-hidden="true"
-                                          data-tooltip-position="top" data-tooltip-vertical-offset="12"
-                                          data-tooltip-horizontal-offset="0"><a class="FKF6mc TpQm9d"
-                                            href="#h.lkih0mq1tcah" aria-label="Copy heading link" jsname="hiK3ld"
-                                            role="button" aria-describedby="h.lkih0mq1tcah_l">
-                                            <div class="VTBa7b MbhUzd" jsname="ksKsZd"></div><span jsslot
-                                              class="xjKiLb"><span class="Ce1Y1c" style="top: -11px"><svg
-                                                  class="OUGEr QdAdhf" width="22px" height="22px" viewBox="0 0 24 24"
-                                                  fill="currentColor" focusable="false">
-                                                  <path d="M0 0h24v24H0z" fill="none" />
-                                                  <path
-                                                    d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" />
-                                                </svg></span></span>
-                                          </a></div>
-                                      </div><span class="Rn3Z1b C9DxTc "
-                                        style="color: #363636; font-family: Arial; font-weight: 400; vertical-align: baseline;">BibTeX</span>
-                                    </div>
-                                  </h2>
-                                  <p dir="ltr" class="zfr3Q CDt4Ke "
-                                    style="background-clip: padding-box; background-color: rgba(0,0,0,0.0590000004); border-bottom: none; border-left: solid #ffffff1f 0.75pt; border-right: solid #ffffff1f 0.75pt; border-top: solid #ffffff1f 0.75pt; line-height: 2.00004; margin-bottom: 0.0pt; margin-left: 4.0pt; margin-right: 4.0pt; margin-top: 0.0pt; padding-bottom: 0.0pt; padding-left: 4.0pt; padding-right: 4.0pt; padding-top: 4.0pt; text-indent: 0.0pt;">
-                                    <span class="C9DxTc "
-                                      style="color: #212121; font-family: &#39;Source Code Pro&#39;, Arial; font-weight: 400;">@misc{bucker2025grappa,</span>
-                                  </p>
-                                  <p dir="ltr" class="zfr3Q CDt4Ke "
-                                    style="background-clip: padding-box; background-color: rgba(0,0,0,0.0590000004); border-bottom: none; border-left: solid #ffffff1f 0.75pt; border-right: solid #ffffff1f 0.75pt; border-top: none; line-height: 2.00004; margin-bottom: 0.0pt; margin-left: 4.0pt; margin-right: 4.0pt; margin-top: 0.0pt; padding-bottom: 0.0pt; padding-left: 4.0pt; padding-right: 4.0pt; padding-top: 0.0pt; text-indent: 0.0pt;">
-                                    <span class="C9DxTc "
-                                      style="color: #212121; font-family: &#39;Source Code Pro&#39;, Arial; font-weight: 400;">
-                                      title={GRAPPA: Generalizing and Adapting Robot Policies via Online Agentic
-                                      Guidance},</span>
-                                  </p>
-                                  <p dir="ltr" class="zfr3Q CDt4Ke "
-                                    style="background-clip: padding-box; background-color: rgba(0,0,0,0.0590000004); border-bottom: none; border-left: solid #ffffff1f 0.75pt; border-right: solid #ffffff1f 0.75pt; border-top: none; line-height: 2.00004; margin-bottom: 0.0pt; margin-left: 4.0pt; margin-right: 4.0pt; margin-top: 0.0pt; padding-bottom: 0.0pt; padding-left: 4.0pt; padding-right: 4.0pt; padding-top: 0.0pt; text-indent: 0.0pt;">
-                                    <span class="C9DxTc "
-                                      style="color: #212121; font-family: &#39;Source Code Pro&#39;, Arial; font-weight: 400;">
-                                      author={Arthur Bucker and Pablo Ortega-Kral and Jonathan Francis and Jean
-                                      Oh},</span>
-                                  </p>
-                                  <p dir="ltr" class="zfr3Q CDt4Ke "
-                                    style="background-clip: padding-box; background-color: rgba(0,0,0,0.0590000004); border-bottom: none; border-left: solid #ffffff1f 0.75pt; border-right: solid #ffffff1f 0.75pt; border-top: none; line-height: 2.00004; margin-bottom: 0.0pt; margin-left: 4.0pt; margin-right: 4.0pt; margin-top: 0.0pt; padding-bottom: 0.0pt; padding-left: 4.0pt; padding-right: 4.0pt; padding-top: 0.0pt; text-indent: 0.0pt;">
-                                    <span class="C9DxTc "
-                                      style="color: #212121; font-family: &#39;Source Code Pro&#39;, Arial; font-weight: 400;">
-                                      year={2025},</span>
-                                  </p>
-                                  <p dir="ltr" class="zfr3Q CDt4Ke "
-                                    style="background-clip: padding-box; background-color: rgba(0,0,0,0.0590000004); border-bottom: none; border-left: solid #ffffff1f 0.75pt; border-right: solid #ffffff1f 0.75pt; border-top: none; line-height: 2.00004; margin-bottom: 0.0pt; margin-left: 4.0pt; margin-right: 4.0pt; margin-top: 0.0pt; padding-bottom: 0.0pt; padding-left: 4.0pt; padding-right: 4.0pt; padding-top: 0.0pt; text-indent: 0.0pt;">
-                                    <span class="C9DxTc "
-                                      style="color: #212121; font-family: &#39;Source Code Pro&#39;, Arial; font-weight: 400;">
-                                      eprint={2410.06473},</span>
-                                  </p>
-                                  <p dir="ltr" class="zfr3Q CDt4Ke "
-                                    style="background-clip: padding-box; background-color: rgba(0,0,0,0.0590000004); border-bottom: none; border-left: solid #ffffff1f 0.75pt; border-right: solid #ffffff1f 0.75pt; border-top: none; line-height: 2.00004; margin-bottom: 0.0pt; margin-left: 4.0pt; margin-right: 4.0pt; margin-top: 0.0pt; padding-bottom: 0.0pt; padding-left: 4.0pt; padding-right: 4.0pt; padding-top: 0.0pt; text-indent: 0.0pt;">
-                                    <span class="C9DxTc "
-                                      style="color: #212121; font-family: &#39;Source Code Pro&#39;, Arial; font-weight: 400;">
-                                      archivePrefix={arXiv},</span>
-                                  </p>
-                                  <p dir="ltr" class="zfr3Q CDt4Ke "
-                                    style="background-clip: padding-box; background-color: rgba(0,0,0,0.0590000004); border-bottom: none; border-left: solid #ffffff1f 0.75pt; border-right: solid #ffffff1f 0.75pt; border-top: none; line-height: 2.00004; margin-bottom: 0.0pt; margin-left: 4.0pt; margin-right: 4.0pt; margin-top: 0.0pt; padding-bottom: 0.0pt; padding-left: 4.0pt; padding-right: 4.0pt; padding-top: 0.0pt; text-indent: 0.0pt;">
-                                    <span class="C9DxTc "
-                                      style="color: #212121; font-family: &#39;Source Code Pro&#39;, Arial; font-weight: 400;">
-                                      primaryClass={cs.RO},</span>
-                                  </p>
-                                  <p dir="ltr" class="zfr3Q CDt4Ke "
-                                    style="background-clip: padding-box; background-color: rgba(0,0,0,0.0590000004); border-bottom: none; border-left: solid #ffffff1f 0.75pt; border-right: solid #ffffff1f 0.75pt; border-top: none; line-height: 2.00004; margin-bottom: 0.0pt; margin-left: 4.0pt; margin-right: 4.0pt; margin-top: 0.0pt; padding-bottom: 0.0pt; padding-left: 4.0pt; padding-right: 4.0pt; padding-top: 0.0pt; text-indent: 0.0pt;">
-                                    <span class="C9DxTc "
-                                      style="color: #212121; font-family: &#39;Source Code Pro&#39;, Arial; font-weight: 400;">
-                                      url={https://arxiv.org/abs/2410.06473},</span>
-                                  </p>
-                                  <p dir="ltr" class="zfr3Q CDt4Ke "
-                                    style="background-clip: padding-box; background-color: rgba(0,0,0,0.0590000004); border-bottom: solid #ffffff1f 0.75pt; border-left: solid #ffffff1f 0.75pt; border-right: solid #ffffff1f 0.75pt; border-top: none; line-height: 2.00004; margin-bottom: 0.0pt; margin-left: 4.0pt; margin-right: 4.0pt; margin-top: 0.0pt; padding-bottom: 4.0pt; padding-left: 4.0pt; padding-right: 4.0pt; padding-top: 0.0pt; text-indent: 0.0pt;">
-                                    <span class="C9DxTc "
-                                      style="color: #212121; font-family: &#39;Source Code Pro&#39;, Arial; font-weight: 400;">}</span>
-                                  </p><br>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-            </div>
-            <div class="Xpil1b xgQ6eb"></div>
-            <div jscontroller="j1RDQb" jsaction="rcuQ6b:rcuQ6b;MxH79b:JdcaS;FaOgy:XuHpsb;" class="dZA9kd ynRLnc"
-              data-last-updated-at-time="1744303450958" data-is-preview="false">
-              <div role="button" class="U26fgb JRtysb WzwrXb I12f0b K2mXPb zXBiaf ynRLnc" jscontroller="iSvg6e"
-                jsaction="click:cOuCgd; mousedown:UX7yZ; mouseup:lbsD7e; mouseenter:tfO1Yc; mouseleave:JywGue; focus:AHmuwe; blur:O22p3e; contextmenu:mg9Pef;touchstart:p6p2H; touchmove:FwuNnf; touchend:yfqBxc(preventDefault=true); touchcancel:JMtRjd;;keydown:I481le;"
-                jsshadow jsname="Bg3gkf" aria-label="Site actions" aria-disabled="false" tabindex="0"
-                aria-haspopup="true" aria-expanded="false" data-menu-corner="bottom-start"
-                data-anchor-corner="top-start">
-                <div class="NWlf3e MbhUzd" jsname="ksKsZd"></div><span jsslot class="MhXXcc oJeWuf"><span
-                    class="Lw7GHd snByac"><svg width="24" height="24" viewBox="0 0 24 24" focusable="false"
-                      class=" NMm5M">
-                      <path
-                        d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z" />
-                    </svg></span></span>
-                <div jsname="xl07Ob" style="display:none" aria-hidden="true">
-                  <div class="JPdR6b hVNH5c" jscontroller="uY3Nvd"
-                    jsaction="IpSVtb:TvD9Pc;fEN2Ze:xzS4ub;frq95c:LNeFm;cFpp9e:J9oOtd; click:H8nU8b; mouseup:H8nU8b; keydown:I481le; keypress:Kr2w4b; blur:O22p3e; focus:H8nU8b"
-                    role="menu" tabindex="0" style="position:fixed">
-                    <div class="XvhY1d" jsaction="mousedown:p8EH2c; touchstart:p8EH2c;">
-                      <div class="JAPqpe K0NPx"><span jsslot class="z80M1 FeRvI"
-                          jsaction="click:o6ZaF(preventDefault=true); mousedown:lAhnzb; mouseup:Osgxgf; mouseenter:SKyDAe; mouseleave:xq3APb;touchstart:jJiBRc; touchmove:kZeBdd; touchend:VfAz8"
-                          jsname="j7LFlb" aria-label="Report abuse" role="menuitem" tabindex="-1">
-                          <div class="aBBjbd MbhUzd" jsname="ksKsZd"></div>
-                          <div class="uyYuVb oJeWuf" jscontroller="HYv29e" jsaction="JIbuQc:dQ6O0c;" jsname="lV5oke"
-                            data-abuse-proto="%.@.null,&quot;106545191080970887496&quot;,&quot;https://sites.google.com/andrew.cmu.edu/grappa/home&quot;]"
-                            data-abuse-reporting-widget-proto="%.@.null,&quot;https://sites.google.com/andrew.cmu.edu/grappa/home&quot;]">
-                            <div class="jO7h3c">Report abuse</div>
-                          </div>
-                        </span><span jsslot class="z80M1 FeRvI"
-                          jsaction="click:o6ZaF(preventDefault=true); mousedown:lAhnzb; mouseup:Osgxgf; mouseenter:SKyDAe; mouseleave:xq3APb;touchstart:jJiBRc; touchmove:kZeBdd; touchend:VfAz8"
-                          jsname="j7LFlb" aria-label="Page details" role="menuitem" tabindex="-1">
-                          <div class="aBBjbd MbhUzd" jsname="ksKsZd"></div>
-                          <div class="uyYuVb oJeWuf" jsaction="JIbuQc:hriXLd;" jsname="Rg8K2c">
-                            <div class="jO7h3c">Page details</div>
-                          </div>
-                        </span></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div jscontroller="j1RDQb"
-              jsaction="focusin:gBxDVb(srlkmf); focusout:zvXhGb(srlkmf); click:ro2KTd(psdQ5e);JIbuQc:DSypkd(Bg3gkf);MxH79b:JdcaS;rcuQ6b:rcuQ6b;"
-              class="LqzjUe ynRLnc" data-last-updated-at-time="1744303450958" data-is-preview="false">
-              <div jsname="psdQ5e" class="Q0cSn"></div>
-              <div jsname="bN97Pc" class="hBW7Hb">
-                <div role="button" class="U26fgb mUbCce fKz7Od kpPxtd QMuaBc M9Bg4d" jscontroller="VXdfxd"
-                  jsaction="click:cOuCgd; mousedown:UX7yZ; mouseup:lbsD7e; mouseenter:tfO1Yc; mouseleave:JywGue; focus:AHmuwe; blur:O22p3e; contextmenu:mg9Pef;touchstart:p6p2H; touchmove:FwuNnf; touchend:yfqBxc(preventDefault=true); touchcancel:JMtRjd;"
-                  jsshadow jsname="Bg3gkf" aria-label="Site actions" aria-disabled="false" tabindex="-1"
-                  aria-hidden="true">
-                  <div class="VTBa7b MbhUzd" jsname="ksKsZd"></div><span jsslot class="xjKiLb"><span class="Ce1Y1c"
-                      style="top: -12px"><svg width="24" height="24" viewBox="0 0 24 24" focusable="false"
-                        class=" NMm5M">
-                        <path
-                          d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z" />
-                      </svg></span></span>
-                </div>
-                <div jsname="srlkmf" class="hUphyc">
-                  <div class="YkaBSd">
-                    <div class="iBkmkf"><span>Page updated</span> <span jsname="CFIm1b" class="dji00c"
-                        jsaction="AHmuwe:eGiyHb; mouseover:eGiyHb;" tabindex="0" role="contentinfo"></span></div>
-                  </div>
-                  <div class="YkaBSd" jscontroller="HYv29e" jsaction="click:dQ6O0c;"
-                    data-abuse-proto="%.@.null,&quot;106545191080970887496&quot;,&quot;https://sites.google.com/andrew.cmu.edu/grappa/home&quot;]"
-                    data-abuse-reporting-widget-proto="%.@.null,&quot;https://sites.google.com/andrew.cmu.edu/grappa/home&quot;]">
-                    <div role="button" class="U26fgb kpPxtd J7BuEb" jsshadow aria-label="Report abuse"
-                      aria-disabled="false" tabindex="0">Report abuse</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <script nonce="jPWXTQK2h8iRJdNB6Aac3A">DOCS_timing['cov'] = new Date().getTime();</script>
-      <script
-        src="https://www.gstatic.com/_/atari/_/js/k=atari.vw.en_GB.H8-pdm5avz0.O/am=AIABCA/d=1/rs=AGEqA5nOy3tDObA70WuQcuk8bs7E4vbsIg/m=view"
-        id="base-js" nonce="jPWXTQK2h8iRJdNB6Aac3A"></script>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
     </div>
+    <div class="navbar-menu">
+      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+        <!-- TODO complete personal link-->
+        <a class="navbar-item" href="">
+          <span class="icon">
+            <i class="fas fa-home"></i>
+          </span>
+        </a>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            More Research
+          </a>
+          <div class="navbar-dropdown">
+            <!-- TODO complete open perception link-->
+            <a class="navbar-item" href="">
+              Open Perception (Coming soon)
+            </a>
+            <!-- TODO complete lab link-->
+            <!-- <a class="navbar-item" href="">
+            Big Lab
+          </a> -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+
+
+  <section class="hero ">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">GRAPPA: Generalizing and Adapting Robot Policies
+              via Online Agentic Guidance</h1>
+            <div class="is-size-5 publication-authors">
+              Author Names Omitted for Anonymous Review.
+            </div>
+            <!-- TODO uncommnet authors list  -->
+            <!-- <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://arthurfenderbucker.github.io/">Arthur Bucker</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.ri.cmu.edu/ri-people/pablo-ortega-kral/">Pablo Ortega-Kral</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://jonfranc.com/">Jonathan Francis</a><sup>1,2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.cs.cmu.edu/~jeanoh/">Jean Oh</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Robotics Institute, Carnegie Mellon University</span>
+            <span class="author-block"><sup>2</sup>Robot Learning Lab, Bosch Center for Artificial Intelligence</span>
+          </div> -->
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="./static/documents/GRAPPA_RAL.pdf" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block disabled" alt="arxiv Omitted for Anonymous Review">
+                  <a href="https://arxiv.org/abs/2410.06473" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+
+                <!-- Video Link. -->
+                <!-- <span class="link-block disabled">
+                    <a href=""
+                        class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fab fa-youtube"></i>
+                    </span>
+                    <span>Video (coming soon)</span>
+                    </a>
+                </span> -->
+
+                <!-- TODO add grappa link -->
+                <span class="link-block disabled">
+                  <a href="" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>GRAPPA (coming soon)</span>
+                  </a>
+                </span>
+
+                <!-- TODO open perception link -->
+                <span class="link-block disabled">
+                  <a href="" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Open-Perception (coming soon)</span>
+                  </a>
+                </span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <img id="teaser" src="static/images/image1.png" alt="GRAPPA overview" style="max-width:100%; height:auto;">
+        <h2 class="subtitle has-text-centered">
+          <span class="grappa">GRAPPA</span> Steers Robot Policies by modifying the action distribution with grounded
+          visuomotor cues.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Robot learning approaches such as behavior cloning and reinforcement learning have shown great promise in
+              synthesizing robot skills from human demonstrations in specific environments. However, these approaches
+              often require task-specific demonstrations or designing complex simulation environments, which limits the
+              development of generalizable and robust policies for unseen real-world settings. Recent advances in the
+              use of foundation models for robotics (e.g., LLMs, VLMs) have shown great potential in enabling systems to
+              understand the semantics in the world from large-scale internet data. However, it remains an open
+              challenge to use this knowledge to enable robotic systems to understand the underlying dynamics of the
+              world, to generalize policies across different tasks, and to adapt policies to new environments. To
+              alleviate these limitations, we propose an agentic framework for robot self-guidance and self-improvement,
+              which consists of a set of role-specialized conversational agents, such as a high-level advisor, a
+              grounding agent, a monitoring agent, and a robotic agent. Our framework iteratively grounds a base robot
+              policy to relevant objects in the environment and uses visuomotor cues to shift the action distribution of
+              the policy to more desirable states, online, while remaining agnostic to the subjective configuration of a
+              given robot hardware platform. We demonstrate that our approach can effectively guide manipulation
+              policies to achieve significantly higher success rates, both in simulation and in real-world experiments,
+              without the need for additional human demonstrations or extensive exploration.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+
+      <!-- Paper video. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Video</h2>
+          <div class="publication-video">
+            <iframe src="./static/videos/GRAPPA_video.mp4" frameborder="0" allow="autoplay; encrypted-media"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+      <!--/ Paper video. -->
+    </div>
+  </section>
+
+
+  <section class="hero info_flow">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <img id="info_flow" src="static/images/image2.png" alt="GRAPPA information flow"
+          style="max-width:100%; height:auto;">
+        <p class="has-text-centered has-text-justified">
+          Information flow between the agents to produce a guidance code. a) The advisor agent orchestrates guidance
+          code generation by collaborating with other agents and using their feedback to refine the generated code. b)
+          The grounding agent uses segmentation and classification models to locate objects of interest provided by the
+          advisor, reporting findings back to the advisor. c) The robotic agent uses a Python interpreter to test the
+          code for the specific robotic platform and judge the adequacy of the code. d) The monitor agent analyses the
+          sequence of frames corresponding to the rollout of the guidance and give feedback on potential improvements.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="hero is-light is-small">
+    <div class="hero-body">
+      <div class="container">
+        <h3 class="title is-3 has-text-centered">Generalization on Out-Off-Distribution Appearances</h3>
+
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="item item-steve">
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+              <div style="position: relative; width: 100%;">
+              <video poster="" id="base_policy_0" autoplay controls muted loop playsinline height="100%" style="width: 100%;">
+                <source src="./static/videos/rollouts/base_policy/0.mp4" type="video/mp4">
+              </video>
+              <div class="video_text_overlay">
+                Base Policy
+              </div>
+              </div>
+              <div style="position: relative; width: 100%;">
+              <video poster="" id="guided_0" autoplay controls muted loop playsinline height="100%" style="width: 100%;">
+                <source src="./static/videos/rollouts/guided/0.mp4" type="video/mp4">
+              </video>
+              <div class="video_text_overlay">
+                Guided Policy
+              </div>
+              </div>
+            </div>
+          </div>
+          <div class="item item-steve">
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+              <div style="position: relative; width: 100%;">
+                <video poster="" id="base_policy_1" autoplay controls muted loop playsinline height="100%" style="width: 100%;">
+                  <source src="./static/videos/rollouts/base_policy/1.mp4" type="video/mp4">
+                </video>
+                <div class="video_text_overlay">
+                  Base Policy
+                </div>
+              </div>
+              <div style="position: relative; width: 100%;">
+                <video poster="" id="guided_1" autoplay controls muted loop playsinline height="100%" style="width: 100%;">
+                  <source src="./static/videos/rollouts/guided/1.mp4" type="video/mp4">
+                </video>
+                <div class="video_text_overlay">
+                  Guided Policy
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item item-steve">
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+              <div style="position: relative; width: 100%;">
+                <video poster="" id="base_policy_2" autoplay controls muted loop playsinline height="100%" style="width: 100%;">
+                  <source src="./static/videos/rollouts/base_policy/2.mp4" type="video/mp4">
+                </video>
+                <div class="video_text_overlay">
+                  Base Policy
+                </div>
+              </div>
+              <div style="position: relative; width: 100%;">
+                <video poster="" id="guided_2" autoplay controls muted loop playsinline height="100%" style="width: 100%;">
+                  <source src="./static/videos/rollouts/guided/2.mp4" type="video/mp4">
+                </video>
+                <div class="video_text_overlay">
+                  Guided Policy
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item item-steve">
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+              <div style="position: relative; width: 100%;">
+                <video poster="" id="base_policy_3" autoplay controls muted loop playsinline height="100%" style="width: 100%;">
+                  <source src="./static/videos/rollouts/base_policy/3.mp4" type="video/mp4">
+                </video>
+                <div class="video_text_overlay">
+                  Base Policy
+                </div>
+              </div>
+              <div style="position: relative; width: 100%;">
+                <video poster="" id="guided_3" autoplay controls muted loop playsinline height="100%" style="width: 100%;">
+                  <source src="./static/videos/rollouts/guided/3.mp4" type="video/mp4">
+                </video>
+                <div class="video_text_overlay">
+                  Guided Policy
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item item-steve">
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+              <div style="position: relative; width: 100%;">
+                <video poster="" id="base_policy_4" autoplay controls muted loop playsinline height="100%" style="width: 100%;">
+                  <source src="./static/videos/rollouts/base_policy/4.mp4" type="video/mp4">
+                </video>
+                <div class="video_text_overlay">
+                  Base Policy
+                </div>
+              </div>
+              <div style="position: relative; width: 100%;">
+                <video poster="" id="guided_4" autoplay controls muted loop playsinline height="100%" style="width: 100%;">
+                  <source src="./static/videos/rollouts/guided/4.mp4" type="video/mp4">
+                </video>
+                <div class="video_text_overlay">
+                  Guided Policy
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <hr>
+
+      <div class="columns is-centered">
+
+        <!-- OOD generalization. -->
+        <div class="column">
+          <div class="content">
+            <h3 class="title is-3 has-text-centered">Out-off-distribution Generalization</h3>
+            <div class="column content has-text-centered">
+
+              <img id="ood" src="static/images/image3.png" alt="position and appearance generalization"
+                style="max-width:100%; height:auto;">
+              <p class="has-text-justified">
+                <span class="grappa">GRAPPA</span> guides the base policy for out-of-distribution cases. The task
+                involves
+                grasping a deformable toy ball and placing it inside a box.
+
+              </p>
+              <img id="ood_table" src="static/images/image4.png" style="max-width:100%; height:auto;">
+            </div>
+          </div>
+        </div>
+        <!--/ OOD generalization. -->
+
+        <!-- Matting. -->
+        <div class="column">
+          <h3 class="title is-3 has-text-centered">Guidance influence</h3>
+          <div class="columns is-centered has-text-centered">
+            <div class="column content">
+              <img id="guidance_influence" src="static/images/image5.png" style="max-width:65%; height:auto;">
+              <p class="has-text-justified">
+                Illustration of the effect of different guidance percentages on a failure case of the base policy. In
+                red we show the base policy failing in an out-of-distribution scenario; with 100\% of guidance (yellow),
+                the end position is successfully above the box, but it has <i>lost low-level notions</i>. By balancing
+                both with intermediate guidance (50%) shown in green, we can complete the task.
+              </p>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!--/ Matting. -->
+
+
+    </div>
+  </section>
+
+
+
+  <!-- <section class="hero is-light is-small">
+    <div class="hero-body">
+      <div class="container">
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="item item-buttons">
+            <video poster="" id="buttons" autoplay controls muted loop playsinline height="100%">
+              <source src="https://www.youtube.com/embed/6uGDJi_ELPc" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-chess">
+            <video poster="" id="chess" autoplay controls muted loop playsinline height="100%">
+              <source src="https://www.youtube.com/embed/TW6MKvfFojg" type="video/mp4">
+            </video>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+
+      <div class="columns is-centered">
+
+        <!-- No guidance. -->
+        <div class="column">
+          <div class="content">
+            <div style="width:100%; aspect-ratio:1/0.91; overflow:hidden;">
+              <img id="ood" src="static/images/detections_0.gif" alt=""
+                style="width:100%; height:100%; object-fit:cover; object-position:top;">
+            </div>
+            <h4 class="title is-4 has-text-centered" style="color: red;">Pretrained Act3d failing<br>(No guidance)</h4>
+            <p class="has-text-justified">
+              Act3d with no guidance: the policy fails to press the last button (blue), but manages to correctly
+              approach the first 2 buttons reaching them from above with the gripper closed. </p>
+
+          </div>
+        </div>
+        <!--/ No guidance. -->
+
+        <!-- guidance only. -->
+        <div class="column">
+          <div class="columns is-centered">
+            <div class="column content">
+              <img id="guidance_influence" src="static/images/detections_1.gif" style="max-width:100%; height:auto;">
+              <h4 class="title has-text-centered is-4" style="color: orange; font-weight: bold;">
+                + 100% of GRAPPA <br>guidance
+              </h4>
+              <p class="has-text-justified">
+                Guidance only (overwriting the base policy): The sequence of movements is correct, but the initial
+                guidance code doesn’t account that the buttons should be approached from above.
+              </p>
+
+            </div>
+
+          </div>
+        </div>
+        <!--/ guidance only. -->
+
+        <!-- grappa. -->
+        <div class="column">
+          <!-- <h3 class="title is-3">Guidance influence</h3> -->
+          <div class="columns is-centered">
+            <div class="column content">
+              <img id="guidance_influence" src="static/images/detections_0.01.gif" style="max-width:100%; height:auto;">
+              <h4 class="title has-text-centered is-4" style="color: green; font-weight: bold;">
+                Act3d + 1% of GRAPPA <br>guidance
+              </h4>
+              <p class="has-text-justified">
+                Act3d with 1% guidance: The modified policy captures both the low-level motion of the pre-trained policy
+                and the high-level guidance provided, successfully pressing the sequence of buttons. </p>
+
+            </div>
+
+          </div>
+        </div>
+        <!--/ grappa. -->
+      </div>
+    </div>
+  </section>
+
+
+  <section class="hero">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <h2 class="subtitle has-text-centered">
+          Performance improvement on the RL-Bench benchmark, by applying 5 iterations of guidance improvement over
+          unsuccessful rollouts.
+        </h2>
+        <img src="static/images/table.png" alt="RL-BENCH simulation results" style="max-width:100%; height:auto;">
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+
+      <div class="columns is-centered has-text-centered">
+
+        <div class="column">
+          <div class="columns is-centered" style="max-width:100%; height:auto;">
+            <div class="column content has-text-justified">
+              <p>
+                When guiding a completely random policy, GRAPPA is still able to achieve great success rates on tasks
+                that don’t require fine-grained motions. Improving its performance at each iteration.
+              </p>
+              <img id="guidance_influence" src="static/images/scratch.png" style="max-width:100%; height:auto;">
+
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="columns is-centered has-text-centered">
+            <div class="column content" style="max-width:100%; height:auto;">
+              <img id="guidance_influence" src="static/images/heatmap.png" style="max-width:60%; height:auto;">
+              <p>
+                Heatmap visualization of the guidance distribution, generated online by our proposed agentic framework.
+                The distribution expresses the relevance of each possible future state for completing the task (e.g.
+                "press the blue button"). The guidance is then used to bias the robot policy's action distribution
+                towards the desirable behavior.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="Appendix">
+    <div class="container is-max-desktop content has-text-centered">
+      <hr>
+
+      <h2 class="title">Appendix</h2>
+      <div class="columns is-centered ">
+
+        <div class="column">
+          <div class="columns is-centered has-text-centered" style="max-width:100%; height:auto;">
+            <div class="column content has-text-justified">
+
+              <img id="guidance_influence" src="static/images/failure_analysis.png"
+                style="max-width:100%; height:auto;">
+              <p>
+                Breakdown for failure cases from the learning-from-scratch experiment (push buttons and turn tap),
+                classifying trials
+                by logs, guidance codes, and observed behavior. Note that this analysis is performed on the
+                learning-from-scratch experiment
+                to decouple the errors of GRAPPA from the base policy.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="columns is-centered">
+            <div class="column content" style="max-width:100%; height:auto;">
+              <p>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class=" is-centered is-max-desktop content">
+        <div class="column">
+          <h4 class="title">Open Perception: A tool kit for visual grounding.</h4>
+
+          <p>
+            We modularize the grounding agent used in GRAPPA and release it as Open Perception, a standalone software
+            package
+            to aid researchers in challenging open-vocabulary object detection and state estimation for embodied robots.
+            Our perception
+            agent uses GroudingDINO and Segment Anything (SAM2) to locate and track objects in the scene, giving a text
+            prompt; we then feed the bounding boxes and masks to two reasoning agents to further refine the selection.
+          </p>
+          <p>
+            A <i>multigranular search</i> agent checks if the desired object was found; if not, it proposes related
+            semantic classes and
+            recursively searches in them, cropping the parent objects to narrow the search. A verification agent can
+            disambiguate between
+            the final detections to choose the most relevant one to the initial query; to do this, we overlay the
+            detection bounding boxes
+            on the images and assign numeric labels and different colors, we then prompt the VLM to choose the most
+            appropriate one
+            given the search objective. Though in the full implementation of GRAPPA, these agents are used in tandem,
+            called by the
+            orchestrator agent, we release them as modular components.
+          </p>
+          <p>
+            Once a detection is made, we use SAM2 to segment and track these objects across the frames. If a
+            corresponding
+            point cloud
+            is available, we provide tools to estimate the 3D-oriented bounding box using PCA. This allows the agent to
+            continuously
+            search, locate, and track an object and provide 3D position reports.
+          </p>
+          <p>
+            At an implementation level, we design Open Perception to support multiple backends, accommodating different
+            software
+            stacks. We provide integrations with REDIS and ROS2; for instantiating the multimodal agents, we utilize
+            LiteLLM, allowing
+            users to choose different models and APIs. We also provide Docker containers for development and deployment.
+          </p>
+          <p>
+            We benchmark our agent on the open-vocabulary detection dataset OCID-Ref*. OCID-Ref extends the Object
+            Clutter
+            Indoor Dataset (OCID) with natural language annotations referencing objects in cluttered scenes. Each
+            environment presents
+            several distractor objects and ambiguous prompts. From this dataset, we sample 300 scenes, whose annotations
+            assume a viewer
+            positioned at the front of the table. We compare the performance of our Grounding Agent against the
+            highest-scoring detection
+            from GroundingDINO.
+          </p>
+
+          <img id="open_perception" src="static/images/groundingdino_performance.png"
+            style="max-width:50%; height:auto;">
+          <p>
+            Grounding Dino Performance with and without the VLM Agent for multi-granular search and disambiguation
+          </p>
+          <br>
+
+          <img id="open_perception" src="static/images/open_perception_ablation.png"
+            style="max-width:100%; height:auto;">
+
+          <p>
+            Our results demonstrate that enhancing Open-Vocabulary detectors with our VLM reasoning scheme allows the
+            model to
+            achieve a detection accuracy 5.3% higher than the model by itself. This represents a relative improvement of
+            10.2% without
+            changing any parameters of the base model.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- 
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Animation</h2>
+
+        <h3 class="title is-4">Interpolating states</h3>
+        <div class="content has-text-justified">
+          <p>
+            We can also animate the scene by interpolating the deformation latent codes of two input
+            frames. Use the slider here to linearly interpolate between the left frame and the right
+            frame.
+          </p>
+        </div>
+        <div class="columns is-vcentered interpolation-panel">
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/interpolate_start.jpg"
+                 class="interpolation-image"
+                 alt="Interpolate start reference image."/>
+            <p>Start Frame</p>
+          </div>
+          <div class="column interpolation-video-column">
+            <div id="interpolation-image-wrapper">
+              Loading...
+            </div>
+            <input class="slider is-fullwidth is-large is-info"
+                   id="interpolation-slider"
+                   step="1" min="0" max="100" value="0" type="range">
+          </div>
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/interpolate_end.jpg"
+                 class="interpolation-image"
+                 alt="Interpolation end reference image."/>
+            <p class="is-bold">End Frame</p>
+          </div>
+        </div>
+        <br/>
+
+        <h3 class="title is-4">Re-rendering the input video</h3>
+        <div class="content has-text-justified">
+          <p>
+            Using <span class="grappa">Nerfies</span>, you can re-render a video from a novel
+            viewpoint such as a stabilized camera by playing back the training deformations.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <video id="replay-video"
+                 controls
+                 muted
+                 preload
+                 playsinline
+                 width="75%">
+            <source src="./static/videos/replay.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Links</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            There's a lot of excellent work that was introduced around the same time as ours.
+          </p>
+          <p>
+            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
+          </p>
+          <p>
+            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
+            both use deformation fields to model non-rigid scenes.
+          </p>
+          <p>
+            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
+          </p>
+          <p>
+            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+
   </div>
-  <div jscontroller="YV8yqd" jsaction="rcuQ6b:npT2md"></div>
+</section> -->
+
+
+
+  <!-- TODO add back BibTeX -->
+  <!-- <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>
+@misc{bucker2025grappa,
+     title={GRAPPA: Generalizing and Adapting Robot Policies via Online Agentic Guidance},
+     author={},
+     year={2025},
+     eprint={2410.06473},
+     archivePrefix={arXiv},
+     primaryClass={cs.RO},
+     url={},
+}</code></pre>
+    </div>
+  </section> -->
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <a class="icon-link" href="./static/documents/GRAPPA_RAL.pdf">
+          <i class="fas fa-file-pdf"></i>
+        </a>
+        <a class="icon-link" href="" class="external-link" disabled>
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website is licensed under a <a rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+            <p>
+              This means you are free to borrow the <a href="https://github.com/nerfies/nerfies.github.io">source
+                code</a> of this website,
+              we just ask that you link back to this page in the footer.
+              Please remember to remove the analytics code included in the header of the website which
+              you do not want on your website.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
 </body>
 
 </html>

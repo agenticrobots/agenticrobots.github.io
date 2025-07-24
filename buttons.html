@@ -1,0 +1,190 @@
+<html class="fontawesome-i2svg-active fontawesome-i2svg-complete">
+    <head>
+  <meta charset="UTF-8">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" integrity="sha512-1+8a5b7d9f3e5c8f0b1c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8g9h0i1j2k3l4m5n6o7p8q9r0s1t2u3v4w5x6y7z8a9b0" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.4/css/academicons.min.css"> -->
+    </head>
+    <body>
+  <section class="publication-section">
+  <style>
+    html, body {
+      /* height: 100%; */
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+    min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+    }
+    .publication-section {
+      padding: 0.5rem 0;
+      background: #fff;
+      border-radius: 12px;
+      max-width: 1000px;
+      margin: 0 auto;
+      /* box-shadow: 0 2px 8px rgba(0,0,0,0.04); */
+    }
+    .publication-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+    .link-block {
+      display: flex;
+    }
+    .external-link.button {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      padding: 0.75em 1.5em;
+      font-size: 1rem;
+      border: none;
+      border-radius: 2em;
+      background: #222;
+      color: #fff;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+    .external-link.button:hover,
+    .external-link.button:focus {
+      background: #444;
+      transform: translateY(-2px) scale(1.03);
+      color: #fff;
+      text-decoration: none;
+    }
+    .external-link .icon {
+      display: flex;
+      align-items: center;
+      font-size: 1.2em;
+    }
+    @media (max-width: 600px) {
+      .publication-links {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      .external-link.button {
+        width: 100%;
+        justify-content: center;
+        font-size: 1.05rem;
+      }
+    }
+  </style>
+  <script>
+    // Optional: Add ripple effect to buttons for better UX
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.external-link.button').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          let ripple = document.createElement('span');
+          ripple.className = 'ripple';
+          ripple.style.left = (e.offsetX) + 'px';
+          ripple.style.top = (e.offsetY) + 'px';
+          this.appendChild(ripple);
+          setTimeout(() => ripple.remove(), 600);
+        });
+      });
+    });
+  </script>
+  <style>
+    /* Ripple effect styles */
+    .external-link.button {
+      position: relative;
+      overflow: hidden;
+    }
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      transform: scale(0);
+      animation: ripple 0.6s linear;
+      background-color: rgba(255,255,255,0.4);
+      pointer-events: none;
+      width: 100px;
+      height: 100px;
+      opacity: 0.7;
+      z-index: 1;
+    }
+    @keyframes ripple {
+      to {
+        transform: scale(2.5);
+        opacity: 0;
+      }
+    }
+  </style>
+<div class="publication-links">
+  <!-- PDF Link. -->
+  <span class="link-block">
+    <a href="https://arxiv.org/pdf/2410.06473" class="external-link button is-normal is-rounded is-dark">
+      <span class="icon">
+          <i class="fas fa-file-pdf"></i>
+      </span>
+      <span>Paper</span>
+    </a>
+  </span>
+  <span class="link-block">
+    <a href="https://arxiv.org/abs/2410.06473" class="external-link button is-normal is-rounded is-dark">
+      <span class="icon">
+        <i class="ai ai-arxiv"></i>
+      </span>
+      <span>arXiv</span>
+    </a>
+  </span>
+  
+  <!-- Video Link. -->
+  <span class="link-block">
+    <a href=""
+        class="external-link button is-normal is-rounded is-dark">
+      <span class="icon">
+          <i class="fab fa-youtube"></i>
+      </span>
+      <span>Video (coming soon)</span>
+    </a>
+  </span>
+  
+  <span class="link-block">
+    <a href="https://github.com/arthurfenderbucker/grappa" class="external-link button is-normal is-rounded is-dark">
+      <span class="icon">
+          <i class="fab fa-github"></i>
+      </span>
+      <span>GRAPPA (coming soon)</span>
+      </a>
+  </span>
+
+  <span class="link-block">
+    <a href="https://github.com/arthurfenderbucker/open_perception" class="external-link button is-normal is-rounded is-dark">
+      <span class="icon">
+          <i class="fab fa-github"></i>
+      </span>
+      <span>Open-Perception</span>
+      </a>
+  </span>
+  <!-- Code Link.
+  <span class="link-block">
+    <a href="https://colab.research.google.com/drive/1csW12b1x1cgMSSeEMAOe4j2wUM0g9erh?usp=sharing" class="external-link button is-normal is-rounded is-dark">
+      <span class="icon">
+          <i class="fab fa-google-drive"></i>
+      </span>
+      <span>MuJoCo Colab</span>
+      </a>
+  </span>-->
+  <!-- Dataset Link. -->
+  <!-- <i class="fa fa-google" aria-hidden="true"></i> -->
+  <!-- <span class="link-block">
+    <a href="https://github.com/google/nerfies/releases/tag/0.1"
+        class="external-link button is-normal is-rounded is-dark">
+      <span class="icon">
+          <i class="fa-brands fa-google"></i>
+      </span>
+      <span>Data</span>
+      </a> -->
+</div>
+</body>
+</html>
