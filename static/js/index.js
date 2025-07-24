@@ -28,6 +28,21 @@ $(document).ready(function() {
       $(".navbar-menu").toggleClass("is-active");
 
     });
+    
+    console.log('Button:');
+    document.querySelectorAll('.expandable-button').forEach(button => {
+      console.log('Button:', button.textContent);
+      button.addEventListener('click', () => {
+        console.log('Button clicked:', button.textContent); // Debugging click event
+        const content = button.nextElementSibling;
+        if (content.style.maxHeight) {
+          content.style.maxHeight = null;
+        } else {
+          content.style.maxHeight = content.scrollHeight + 'px';
+        }
+      });
+    });
+    
 
     var options = {
 			slidesToScroll: 1,
@@ -73,6 +88,8 @@ $(document).ready(function() {
     // setInterpolationImage(0);
     // $('#interpolation-slider').prop('max', NUM_INTERP_FRAMES - 1);
 
-    bulmaSlider.attach();
+    // bulmaSlider.attach();
+    
 
+    
 })
