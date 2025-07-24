@@ -67,10 +67,6 @@
             <a class="navbar-item" href="">
               Open Perception (Coming soon)
             </a>
-            <!-- TODO complete lab link-->
-            <!-- <a class="navbar-item" href="">
-            Big Lab
-          </a> -->
           </div>
         </div>
       </div>
@@ -89,49 +85,32 @@
             <div class="is-size-5 publication-authors">
               Author Names Omitted for Anonymous Review.
             </div>
-            <!-- TODO uncommnet authors list  -->
-            <!-- <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <a href="https://arthurfenderbucker.github.io/">Arthur Bucker</a><sup>1</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://www.ri.cmu.edu/ri-people/pablo-ortega-kral/">Pablo Ortega-Kral</a><sup>1</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://jonfranc.com/">Jonathan Francis</a><sup>1,2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://www.cs.cmu.edu/~jeanoh/">Jean Oh</a><sup>1</sup>
-            </span>
           </div>
 
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>Robotics Institute, Carnegie Mellon University</span>
-            <span class="author-block"><sup>2</sup>Robot Learning Lab, Bosch Center for Artificial Intelligence</span>
-          </div> -->
+          <!-- TODO uncommnet authors list  -->
+          
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="./static/documents/GRAPPA_RAL.pdf" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block disabled" alt="arxiv Omitted for Anonymous Review">
+                <a href="https://arxiv.org/abs/2410.06473" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
 
-            <div class="column has-text-centered">
-              <div class="publication-links">
-                <!-- PDF Link. -->
-                <span class="link-block">
-                  <a href="./static/documents/GRAPPA_RAL.pdf" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                    </span>
-                    <span>Paper</span>
-                  </a>
-                </span>
-                <span class="link-block disabled" alt="arxiv Omitted for Anonymous Review">
-                  <a href="https://arxiv.org/abs/2410.06473" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                    </span>
-                    <span>arXiv</span>
-                  </a>
-                </span>
-
-                <!-- Video Link. -->
-                <!-- <span class="link-block disabled">
+              <!-- Video Link. -->
+              <!-- <span class="link-block disabled">
                     <a href=""
                         class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
@@ -141,31 +120,31 @@
                     </a>
                 </span> -->
 
-                <!-- TODO add grappa link -->
-                <span class="link-block disabled">
-                  <a href="" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>GRAPPA (coming soon)</span>
-                  </a>
-                </span>
+              <!-- TODO add grappa link -->
+              <span class="link-block disabled">
+                <a href="" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>GRAPPA (coming soon)</span>
+                </a>
+              </span>
 
-                <!-- TODO open perception link -->
-                <span class="link-block disabled">
-                  <a href="" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Open-Perception (coming soon)</span>
-                  </a>
-                </span>
-              </div>
-
+              <!-- TODO open perception link -->
+              <span class="link-block disabled">
+                <a href="" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Open-Perception (coming soon)</span>
+                </a>
+              </span>
             </div>
+
           </div>
         </div>
       </div>
+    </div>
     </div>
   </section>
 
@@ -257,79 +236,114 @@
           <div class="item item-steve">
             <div style="display: flex; flex-direction: column; gap: 16px;">
               <div style="position: relative; width: 100%;">
-              <video poster="" id="base_policy_0" autoplay controls muted loop playsinline height="100%" style="width: 100%;">
-                <source src="./static/videos/rollouts/base_policy/0.mp4" type="video/mp4">
-              </video>
-              <div class="video_text_overlay">
-                Base Policy
-              </div>
+                <video poster="" id="base_policy_0" autoplay controls muted loop playsinline height="100%"
+                  style="width: 100%;">
+                  <source src="./static/videos/rollouts/base_policy/0.mp4" type="video/mp4">
+                </video>
+                <div class="video_text_overlay">
+                  Base Policy
+                </div>
+                <div class="video_img_overlay">
+                  <img class="checkmark-img"src="./static/images/icons/red.png">
+                </div>
               </div>
               <div style="position: relative; width: 100%;">
-              <video poster="" id="guided_0" autoplay controls muted loop playsinline height="100%" style="width: 100%;">
-                <source src="./static/videos/rollouts/guided/0.mp4" type="video/mp4">
-              </video>
-              <div class="video_text_overlay">
-                Guided Policy
-              </div>
+                <video poster="" id="guided_0" autoplay controls muted loop playsinline height="100%"
+                  style="width: 100%;">
+                  <source src="./static/videos/rollouts/guided/0.mp4" type="video/mp4">
+                </video>
+                <div class="video_text_overlay">
+                  Guided Policy
+                </div>
+                <div class="video_img_overlay">
+                  <img class="checkmark-img"src="./static/images/icons/green.png">
+                </div>
               </div>
             </div>
           </div>
           <div class="item item-steve">
             <div style="display: flex; flex-direction: column; gap: 16px;">
               <div style="position: relative; width: 100%;">
-                <video poster="" id="base_policy_1" autoplay controls muted loop playsinline height="100%" style="width: 100%;">
+                <video poster="" id="base_policy_1" autoplay controls muted loop playsinline height="100%"
+                  style="width: 100%;">
                   <source src="./static/videos/rollouts/base_policy/1.mp4" type="video/mp4">
                 </video>
                 <div class="video_text_overlay">
                   Base Policy
                 </div>
+                <div class="video_img_overlay">
+                  <img class="checkmark-img"src="./static/images/icons/red.png">
+                </div>
               </div>
               <div style="position: relative; width: 100%;">
-                <video poster="" id="guided_1" autoplay controls muted loop playsinline height="100%" style="width: 100%;">
+                <video poster="" id="guided_1" autoplay controls muted loop playsinline height="100%"
+                  style="width: 100%;">
                   <source src="./static/videos/rollouts/guided/1.mp4" type="video/mp4">
                 </video>
                 <div class="video_text_overlay">
                   Guided Policy
                 </div>
+                  <div class="video_img_overlay">
+                    <img class="checkmark-img"src="./static/images/icons/green.png">
+                  </div>
+                <div class="video_img_overlay">
+                  <img class="checkmark-img"src="./static/images/icons/green.png">
+                </div>
               </div>
             </div>
           </div>
           <div class="item item-steve">
             <div style="display: flex; flex-direction: column; gap: 16px;">
               <div style="position: relative; width: 100%;">
-                <video poster="" id="base_policy_2" autoplay controls muted loop playsinline height="100%" style="width: 100%;">
+                <video poster="" id="base_policy_2" autoplay controls muted loop playsinline height="100%"
+                  style="width: 100%;">
                   <source src="./static/videos/rollouts/base_policy/2.mp4" type="video/mp4">
                 </video>
                 <div class="video_text_overlay">
                   Base Policy
                 </div>
+                <div class="video_img_overlay">
+                  <img class="checkmark-img"src="./static/images/icons/red.png">
+                </div>
               </div>
               <div style="position: relative; width: 100%;">
-                <video poster="" id="guided_2" autoplay controls muted loop playsinline height="100%" style="width: 100%;">
+                <video poster="" id="guided_2" autoplay controls muted loop playsinline height="100%"
+                  style="width: 100%;">
                   <source src="./static/videos/rollouts/guided/2.mp4" type="video/mp4">
                 </video>
                 <div class="video_text_overlay">
                   Guided Policy
                 </div>
+                <div class="video_img_overlay">
+                  <img class="checkmark-img"src="./static/images/icons/red.png">
+                </div>
               </div>
             </div>
           </div>
           <div class="item item-steve">
             <div style="display: flex; flex-direction: column; gap: 16px;">
               <div style="position: relative; width: 100%;">
-                <video poster="" id="base_policy_3" autoplay controls muted loop playsinline height="100%" style="width: 100%;">
+                <video poster="" id="base_policy_3" autoplay controls muted loop playsinline height="100%"
+                  style="width: 100%;">
                   <source src="./static/videos/rollouts/base_policy/3.mp4" type="video/mp4">
                 </video>
                 <div class="video_text_overlay">
                   Base Policy
                 </div>
+                <div class="video_img_overlay">
+                  <img class="checkmark-img"src="./static/images/icons/red.png">
+                </div>
               </div>
               <div style="position: relative; width: 100%;">
-                <video poster="" id="guided_3" autoplay controls muted loop playsinline height="100%" style="width: 100%;">
+                <video poster="" id="guided_3" autoplay controls muted loop playsinline height="100%"
+                  style="width: 100%;">
                   <source src="./static/videos/rollouts/guided/3.mp4" type="video/mp4">
                 </video>
                 <div class="video_text_overlay">
                   Guided Policy
+                </div>
+                <div class="video_img_overlay">
+                  <img class="checkmark-img"src="./static/images/icons/green.png">
                 </div>
               </div>
             </div>
@@ -337,19 +351,55 @@
           <div class="item item-steve">
             <div style="display: flex; flex-direction: column; gap: 16px;">
               <div style="position: relative; width: 100%;">
-                <video poster="" id="base_policy_4" autoplay controls muted loop playsinline height="100%" style="width: 100%;">
+                <video poster="" id="base_policy_4" autoplay controls muted loop playsinline height="100%"
+                  style="width: 100%;">
                   <source src="./static/videos/rollouts/base_policy/4.mp4" type="video/mp4">
                 </video>
                 <div class="video_text_overlay">
                   Base Policy
                 </div>
+                <div class="video_img_overlay">
+                  <img class="checkmark-img"src="./static/images/icons/red.png">
+                </div>
               </div>
               <div style="position: relative; width: 100%;">
-                <video poster="" id="guided_4" autoplay controls muted loop playsinline height="100%" style="width: 100%;">
+                <video poster="" id="guided_4" autoplay controls muted loop playsinline height="100%"
+                  style="width: 100%;">
                   <source src="./static/videos/rollouts/guided/4.mp4" type="video/mp4">
                 </video>
                 <div class="video_text_overlay">
                   Guided Policy
+                </div>
+                <div class="video_img_overlay">
+                  <img class="checkmark-img"src="./static/images/icons/green.png">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item item-steve">
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+              <div style="position: relative; width: 100%;">
+                <video poster="" id="base_policy_5" autoplay controls muted loop playsinline height="100%"
+                  style="width: 100%;">
+                  <source src="./static/videos/rollouts/base_policy/5.mp4" type="video/mp4">
+                </video>
+                <div class="video_text_overlay">
+                  Base Policy
+                </div>
+                <div class="video_img_overlay">
+                  <img class="checkmark-img"src="./static/images/icons/red.png">
+                </div>
+              </div>
+              <div style="position: relative; width: 100%;">
+                <video poster="" id="guided_5" autoplay controls muted loop playsinline height="100%"
+                  style="width: 100%;">
+                  <source src="./static/videos/rollouts/guided/5.mp4" type="video/mp4">
+                </video>
+                <div class="video_text_overlay">
+                  Guided Policy
+                </div>
+                <div class="video_img_overlay">
+                  <img class="checkmark-img"src="./static/images/icons/green.png">
                 </div>
               </div>
             </div>

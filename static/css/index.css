@@ -5,19 +5,24 @@ body {
 p {
   text-align: justify;
 }
-.video_check_overlay {
+.video_img_overlay {
   position: absolute;
-  top: 8px;
-  right: 8px;
-  background: transparent;
-  padding: 4px;
+  top: 15%;
+  left: 3%;
+  background: rgba(0,0,0,0.0);;
+  padding: 4px 12px;
   border-radius: 0px;
-  max-width: 10%;
+  max-width: 20%;
+  pointer-events: none;
+}
+.checkmark-img {
+  height: auto;
+  width: 100%;
 }
 .video_text_overlay {
   position: absolute;
-  top: 8px;
-  left: 8px;
+  top: 3%;
+  left: 3%;
   background: rgba(0,0,0,0.6);
   color: #fff;
   padding: 4px 12px;
