@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GRAPPA Agent Conversation Log Viewer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+  <link rel="stylesheet" href="./static/css/log_viewer.css">
+</head>
+<body>
+  <div class="page-wrapper">
+    <header class="page-header">
+      <h1>Agent Conversation Log Viewer</h1>
+      <p>Browse the stored multi-agent dialogues that power GRAPPA guidance generation. Use the controls below to move through each conversation snapshot.</p>
+    </header>
+
+    <div class="controls-bar">
+      <button id="reloadLogsBtn" type="button">Reload Logs</button>
+      <span class="conversation-slide-info" id="conversationSlideInfo">Loading...</span>
+    </div>
+
+    <div class="conversation-carousel-container">
+      <div class="conversation-carousel-wrapper" id="conversationCarouselWrapper">
+        <!-- Slides will be injected dynamically -->
+      </div>
+    </div>
+
+    <div class="conversation-carousel-controls">
+      <button class="conversation-carousel-button" id="conversationPrevBtn" type="button" onclick="changeConversationSlide(-1)" disabled>
+        <span>←</span>
+        <span>Previous</span>
+      </button>
+
+      <div class="conversation-carousel-indicators" id="conversationIndicators">
+        <!-- Indicators will be injected dynamically -->
+      </div>
+
+      <button class="conversation-carousel-button" id="conversationNextBtn" type="button" onclick="changeConversationSlide(1)" disabled>
+        <span>Next</span>
+        <span>→</span>
+      </button>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+  <script>
+    (function() {
+      let currentConversationSlide = 0;
+      let totalConversationSlides = 0;
+      let conversationLogs = [];
+      const defaultSlideText = 'Loading...';
+
+      const wrapper = document.getElementById('conversationCarouselWrapper');
+      const indicatorsContainer = document.getElementById('conversationIndicators');
+      const prevBtn = document.getElementById('conversationPrevBtn');
+      const nextBtn = document.getElementById('conversationNextBtn');
+      const slideInfo = document.getElementById('conversationSlideInfo');
+      const reloadBtn = document.getElementById('reloadLogsBtn');
+
+      const conversationFiles = [
+        'static/logs/conversation_logs/conversation_log.json'
+      ];
+
+      function getAgentType(role, agent) {
+        if (agent) {
+          const lowered = agent.toLowerCase();
+          if (lowered.includes('advisor')) return 'advisor';
+          if (lowered.includes('grounding')) return 'grounding';
+          if (lowered.includes('robotic')) return 'robotic';
+          if (lowered.includes('user') || lowered.includes('proxy')) return 'monitor';
+        }
+        if (role === 'user') return 'monitor';
+        if (role === 'assistant') return 'advisor';
+        if (role === 'tool') return 'monitor';
+        return 'monitor';
+      }
+
+      function getDisplayName(role, agent) {
+        if (role === 'tool') return 'Tool Calling';
+        if (agent) return agent.replace(/_/g, ' ').replace(/\b\w/g, letter => letter.toUpperCase());
+        return role.charAt(0).toUpperCase() + role.slice(1);
+      }
+
+      function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+      }
+
+      function createConversationSlide(conversationData, index) {
+        const firstMessage = conversationData.messages?.find(msg => msg.content && msg.content.trim() !== '');
+        const firstMessageContent = firstMessage ? firstMessage.content.substring(0, 150).replace(/\n/g, ' ') : 'No messages available.';
+        const subtitle = firstMessageContent.length >= 150 ? `${firstMessageContent}...` : firstMessageContent;
+
+        const messagesHtml = (conversationData.messages || [])
+          .filter(msg => msg.content && msg.content.trim() !== '')
+          .map(msg => {
+            const agentType = getAgentType(msg.role, msg.name || msg.agent);
+            const displayName = getDisplayName(msg.role, msg.name || msg.agent);
+
+            let content = msg.content;
+            const images = [];
+            const codeBlocks = [];
+
+            content = content.replace(/<img\s+data:image\/([^;]+);base64,([^>]+)>/g, (_, format, data) => {
+              const placeholder = `__IMAGE_${images.length}__`;
+              images.push(`<img src="data:image/${format};base64,${data}" alt="Embedded image" />`);
+              return placeholder;
+            });
+
+            content = content.replace(/```(\w+)?\n([\s\S]*?)```/g, (_, lang, code) => {
+              const placeholder = `__CODE_BLOCK_${codeBlocks.length}__`;
+              codeBlocks.push(`<pre><code class="language-${lang || 'python'}">${escapeHtml(code)}</code></pre>`);
+              return placeholder;
+            });
+
+            content = escapeHtml(content);
+            content = content.replace(/\n/g, '<br>');
+
+            images.forEach((img, idx) => {
+              content = content.replace(`__IMAGE_${idx}__`, img);
+            });
+
+            codeBlocks.forEach((block, idx) => {
+              content = content.replace(`__CODE_BLOCK_${idx}__`, block);
+            });
+
+            const initials = displayName.split(' ').map(word => word.charAt(0)).join('').slice(0, 2).toUpperCase();
+
+            return `
+              <div class="message ${agentType}">
+                <div class="message-header">
+                  <div class="agent-avatar ${agentType}">${initials}</div>
+                  <span class="agent-name">${displayName}</span>
+                  ${msg.timestamp ? `<span class="message-timestamp">${escapeHtml(msg.timestamp)}</span>` : ''}
+                </div>
+                <div class="message-content">${content}</div>
+              </div>
+            `;
+          }).join('');
+
+  const totalMessages = conversationData.total_messages || conversationData.messages?.length || 0;
+  const tokenValue = Number(conversationData.total_tokens);
+  const tokenCount = Number.isFinite(tokenValue) ? tokenValue : 'N/A';
+  const costValue = Number(conversationData.total_cost);
+  const cost = Number.isFinite(costValue) ? `$${costValue.toFixed(4)}` : 'N/A';
+
+        return `
+          <div class="conversation-carousel-item" data-slide-index="${index}">
+            <div class="conversation-card">
+              <div class="conversation-header">
+                <h2 class="conversation-title">Agent Conversation Log</h2>
+                <p class="conversation-subtitle">${subtitle}</p>
+              </div>
+              <div class="conversation-messages">${messagesHtml || '<p>No messages to display for this log.</p>'}</div>
+              <div class="conversation-footer">
+                <div class="conversation-stats">
+                  <div class="stat-item">
+                    <span class="stat-icon">🗨️</span>
+                    <span class="stat-value">${totalMessages} messages</span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-icon">🔢</span>
+                    <span class="stat-value">${tokenCount} tokens</span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-icon">💲</span>
+                    <span class="stat-value">${cost}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      async function loadConversationLogs() {
+        if (!wrapper) return;
+
+        wrapper.innerHTML = '<div class="conversation-carousel-item"><div class="conversation-card"><div class="conversation-header"><h2 class="conversation-title">Loading</h2><p class="conversation-subtitle">Fetching conversation logs...</p></div><div class="conversation-messages"><p>Please wait.</p></div></div></div>';
+        indicatorsContainer.innerHTML = '';
+        totalConversationSlides = 0;
+        currentConversationSlide = 0;
+        slideInfo.textContent = defaultSlideText;
+        prevBtn.disabled = true;
+        nextBtn.disabled = true;
+
+        try {
+          const loadPromises = conversationFiles.map(async (file) => {
+            const response = await fetch(file);
+            if (!response.ok) throw new Error(`Failed to load ${file}`);
+            return await response.json();
+          });
+
+          conversationLogs = await Promise.all(loadPromises);
+          const slides = conversationLogs.map((data, index) => createConversationSlide(data, index));
+          wrapper.innerHTML = slides.join('');
+          totalConversationSlides = slides.length;
+
+          indicatorsContainer.innerHTML = conversationLogs.map((_, index) =>
+            `<div class="conversation-indicator ${index === 0 ? 'active' : ''}" onclick="goToConversationSlide(${index})"></div>`
+          ).join('');
+
+          if (typeof Prism !== 'undefined' && wrapper) {
+            Prism.highlightAllUnder(wrapper);
+          }
+
+          updateConversationCarousel();
+        } catch (error) {
+          console.error('Error loading conversation logs:', error);
+          wrapper.innerHTML = `
+            <div class="conversation-carousel-item">
+              <div class="conversation-card">
+                <div class="conversation-header">
+                  <h2 class="conversation-title">Unable to load logs</h2>
+                  <p class="conversation-subtitle">${error.message}</p>
+                </div>
+                <div class="conversation-messages"><p>Check that the JSON log files exist and are accessible.</p></div>
+              </div>
+            </div>
+          `;
+        }
+      }
+
+      function updateConversationCarousel() {
+        if (!wrapper || totalConversationSlides === 0) {
+          slideInfo.textContent = totalConversationSlides === 0 ? 'No logs available' : defaultSlideText;
+          prevBtn.disabled = true;
+          nextBtn.disabled = true;
+          return;
+        }
+
+        wrapper.style.transform = `translateX(-${currentConversationSlide * 100}%)`;
+
+        const indicators = document.querySelectorAll('.conversation-indicator');
+        indicators.forEach((indicator, index) => {
+          indicator.classList.toggle('active', index === currentConversationSlide);
+        });
+
+        prevBtn.disabled = currentConversationSlide === 0;
+        nextBtn.disabled = currentConversationSlide === totalConversationSlides - 1;
+
+        slideInfo.textContent = `${currentConversationSlide + 1} / ${totalConversationSlides}`;
+      }
+
+      window.changeConversationSlide = function(direction) {
+        currentConversationSlide += direction;
+        if (currentConversationSlide < 0) currentConversationSlide = 0;
+        if (currentConversationSlide >= totalConversationSlides) currentConversationSlide = totalConversationSlides - 1;
+        updateConversationCarousel();
+      };
+
+      window.goToConversationSlide = function(index) {
+        currentConversationSlide = index;
+        updateConversationCarousel();
+      };
+
+      document.addEventListener('keydown', (event) => {
+        if (!wrapper) return;
+        const rect = wrapper.getBoundingClientRect();
+        const inView = rect.top < window.innerHeight && rect.bottom >= 0;
+        if (!inView) return;
+        if (event.key === 'ArrowLeft') changeConversationSlide(-1);
+        if (event.key === 'ArrowRight') changeConversationSlide(1);
+      });
+
+      if (reloadBtn) {
+        reloadBtn.addEventListener('click', () => {
+          loadConversationLogs();
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', loadConversationLogs);
+      } else {
+        loadConversationLogs();
+      }
+    })();
+  </script>
+</body>
+</html>
